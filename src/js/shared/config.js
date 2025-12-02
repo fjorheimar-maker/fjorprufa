@@ -79,3 +79,5 @@ const monthNames = [
 ];
 
 const dayNames = ['Sunnudagur', 'Mánudagur', 'Þriðjudagur', 'Miðvikudagur', 'Fimmtudagur', 'Föstudagur', 'Laugardagur'];
+
+console.log('Config.js loaded!');
