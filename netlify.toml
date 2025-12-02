@@ -2,13 +2,6 @@
   command = "npm run build"
   publish = "public"
 
-# Redirects fyrir SPA-style navigation (ef þarf)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
-
 # Headers fyrir caching
 [[headers]]
   for = "/css/*"
