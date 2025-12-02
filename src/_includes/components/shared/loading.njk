@@ -1,0 +1,41 @@
+{# Loading Component #}
+
+{# Default loading spinner #}
+{% macro spinner(text="Hleð...") %}
+<div class="loading">
+  <div class="loading-spinner"></div>
+  <p>{{ text }}</p>
+</div>
+{% endmacro %}
+
+{# Inline loading spinner (smaller) #}
+{% macro spinnerInline() %}
+<div class="loading-spinner" style="width: 20px; height: 20px; border-width: 2px;"></div>
+{% endmacro %}
+
+{# Empty state #}
+{% macro empty(icon="📋", text="Engin gögn") %}
+<div class="empty-state">
+  <div class="empty-state-icon">{{ icon }}</div>
+  <p>{{ text }}</p>
+</div>
+{% endmacro %}
+
+{# Skeleton loader #}
+{% macro skeleton(height="20px", width="100%") %}
+<div class="skeleton" style="height: {{ height }}; width: {{ width }}; border-radius: 8px;"></div>
+{% endmacro %}
+
+{# Success message #}
+{% macro success(id, text="Aðgerð tókst!") %}
+<div class="success-message" id="{{ id }}">
+  ✅ {{ text }}
+</div>
+{% endmacro %}
+
+{# Error message #}
+{% macro error(id, text="Villa kom upp") %}
+<div class="login-error" id="{{ id }}">
+  {{ text }}
+</div>
+{% endmacro %}

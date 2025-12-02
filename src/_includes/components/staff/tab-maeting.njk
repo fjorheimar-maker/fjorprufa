@@ -1,0 +1,56 @@
+{# Tab: Mæting dagsins #}
+<div class="tab-content active" id="tab-maeting">
+  <div class="current-activity" id="currentActivity">
+    <div class="activity-info">
+      <span class="activity-icon">📋</span>
+      <div>
+        <div class="activity-name" id="activityName">Sæki upplýsingar...</div>
+        <div class="activity-time" id="activityTime"></div>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div class="activity-count" id="activityCount">-</div>
+      <div class="activity-count-label">nemendur</div>
+    </div>
+  </div>
+
+  <div class="section-title">Mætingalisti</div>
+  
+  {# Dagaval #}
+  <div class="date-navigation">
+    <button class="date-nav-btn" id="prevDayBtn" onclick="changeDate(-1)">←</button>
+    <div class="date-display" id="dateDisplay">Í dag</div>
+    <button class="date-nav-btn" id="nextDayBtn" onclick="changeDate(1)" disabled>→</button>
+  </div>
+  
+  <div class="attendance-list" id="attendanceList">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>Sæki mætingar...</p>
+    </div>
+  </div>
+
+  {# Legend / Skýringarmynd #}
+  <div class="attendance-legend" id="attendanceLegend" style="display: none;">
+    <div class="legend-item">
+      <span class="legend-icon">🔥</span>
+      <span>Vikur í röð</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-icon">⚠️</span>
+      <span>10+ dagar frá mætingu</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-icon">⭐</span>
+      <span>Fyrsta mæting</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">📊 Sundurliðun</div>
+    <div class="breakdown" id="attendanceBreakdown"></div>
+  </div>
+
+  {# Calendar section #}
+  {% include "components/staff/calendar.njk" %}
+</div>

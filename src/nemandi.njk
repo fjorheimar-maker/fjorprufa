@@ -1,0 +1,127 @@
+---
+title: Nemandi
+layout: base.njk
+---
+
+{% block extraCss %}
+<link rel="stylesheet" href="/css/components/autocomplete.css">
+<style>
+  .schedule-status {
+    margin-bottom: 24px;
+  }
+
+  .schedule-active,
+  .schedule-inactive,
+  .schedule-multiple {
+    background: var(--color-card);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .schedule-active {
+    border: 2px solid var(--center-color);
+  }
+
+  .schedule-active-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .schedule-active-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .schedule-active-time {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+</style>
+{% endblock %}
+
+{# Center Selection #}
+<div class="view" id="centerView">
+  <div class="card" style="max-width: 420px;">
+    <div class="header" style="text-align: center; margin-bottom: 32px;">
+      <div class="header-icon">👋</div>
+      <h1 class="header-title">Fjörlistinn</h1>
+      <p class="header-subtitle">Veldu félagsmiðstöð</p>
+    </div>
+
+    <div class="center-buttons">
+      <button class="center-btn" data-center="HAFNOFELO" style="background: linear-gradient(135deg, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6, #ec4899);">
+        <span class="center-btn-name">Fjör Hafnó</span>
+      </button>
+      <button class="center-btn" data-center="STAPAFELO" style="background: #8B5CF6;">
+        <span class="center-btn-name">Fjör Stapa</span>
+      </button>
+      <button class="center-btn" data-center="AKURFELO" style="background: #EAB308;">
+        <span class="center-btn-name">Fjör Akur</span>
+      </button>
+      <button class="center-btn" data-center="HAALEITIFELO" style="background: #EC4899;">
+        <span class="center-btn-name">Fjör Háaleiti</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+{# Name Input View #}
+<div class="view hidden" id="nameView">
+  <button class="back-btn" onclick="goBack()">← Til baka</button>
+  
+  <div class="card" style="max-width: 420px;">
+    <div class="header" style="text-align: center; margin-bottom: 24px;">
+      <div class="header-icon">👤</div>
+      <h1 class="header-title">Skrá mætingu</h1>
+      <p class="header-center" id="centerName">Fjörlistinn</p>
+    </div>
+
+    <div class="schedule-status" id="scheduleStatus">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Sæki dagskrá...</p>
+      </div>
+    </div>
+
+    <div class="schedule-active hidden" id="scheduleActive">
+      <div class="schedule-active-icon">✅</div>
+      <div class="schedule-active-name" id="currentActivityName">-</div>
+      <div class="schedule-active-time" id="currentActivityTime">-</div>
+    </div>
+
+    <div class="schedule-inactive hidden" id="scheduleInactive">
+      <p>Engin vakt í gangi</p>
+    </div>
+
+    <div class="name-input-container">
+      <input type="text" class="name-input" id="nameInput" placeholder="Skrifaðu nafnið þitt..." disabled />
+      <div class="autocomplete-list" id="autocompleteList"></div>
+    </div>
+
+    <button class="btn" id="checkinBtn" disabled>Skrá mig</button>
+    
+    <div style="text-align: center; margin-top: 16px;">
+      <a href="minsida.html" style="color: var(--color-text-muted);">Mín síða →</a>
+    </div>
+  </div>
+</div>
+
+{# Success View #}
+<div class="view hidden" id="successView">
+  <div class="card" style="max-width: 420px; text-align: center;">
+    <div style="font-size: 4rem; margin-bottom: 16px;">🎉</div>
+    <h2 style="margin-bottom: 8px;" id="successName">Velkominn/n!</h2>
+    <p style="color: var(--color-text-muted); margin-bottom: 24px;" id="successMessage">Mæting skráð!</p>
+    <button class="btn" onclick="resetToNameInput()">Skrá annan</button>
+  </div>
+</div>
+
+{% block extraJs %}
+<script src="/js/pages/nemandi/main.js"></script>
+{% endblock %}

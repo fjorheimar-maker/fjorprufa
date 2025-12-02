@@ -1,0 +1,57 @@
+{# Tab: Admin Árslok #}
+<div class="tab-content" id="tab-arslokar">
+  <div class="section-title">🗓️ Árslokaaðgerðir</div>
+
+  <div class="settings-section">
+    <div class="settings-section-title">📋 Hvað gerist við árslok?</div>
+    <p style="color: var(--color-text-muted); line-height: 1.6;">
+      Þegar skólaári lýkur þarf að undirbúa kerfið fyrir næsta ár. Eftirfarandi aðgerðir eru framkvæmdar:
+    </p>
+    <ul style="color: var(--color-text-muted); line-height: 1.8; margin: 16px 0;">
+      <li>✅ Allir nemendur hækka um einn bekk (8→9, 9→10)</li>
+      <li>✅ Nemendur í 10. bekk verða óvirkir (útskrifaðir)</li>
+      <li>✅ Mætingagögn eldri en 2 ár eru eytt</li>
+      <li>✅ Streaks og teljara er ekki eytt</li>
+    </ul>
+  </div>
+
+  <div class="settings-section">
+    <div class="settings-section-title">📊 Núverandi staða</div>
+    <div class="overview-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="overview-card">
+        <div class="overview-card-value" id="count8bekk">-</div>
+        <div class="overview-card-label">8. bekkur</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-value" id="count9bekk">-</div>
+        <div class="overview-card-label">9. bekkur</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-value" id="count10bekk">-</div>
+        <div class="overview-card-label">10. bekkur (útskrifast)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-section">
+    <div class="settings-section-title">🆕 Innflutningur nýrra nemenda</div>
+    <p style="color: var(--color-text-muted); margin-bottom: 16px;">
+      Hlaðið inn CSV skrá með nýjum 8. bekkingum. Skráin þarf að hafa dálkana: nafn, kennitala, skoli
+    </p>
+    <div class="form-group">
+      <input type="file" class="form-input" id="importFile" accept=".csv">
+    </div>
+    <button class="btn-secondary" onclick="previewImport()">Forskoða</button>
+    <div id="importPreview" style="margin-top: 16px;"></div>
+  </div>
+
+  <div class="danger-zone">
+    <div class="danger-zone-title">⚠️ Hættusvæði</div>
+    <p style="color: var(--color-text-muted); margin-bottom: 16px;">
+      Þessar aðgerðir er ekki hægt að afturkalla. Vertu viss um að hafa tekið öryggisafrit.
+    </p>
+    <button class="danger-zone-btn" onclick="triggerYearEndCleanup()">
+      🔄 Keyra árslokahreinsun
+    </button>
+  </div>
+</div>

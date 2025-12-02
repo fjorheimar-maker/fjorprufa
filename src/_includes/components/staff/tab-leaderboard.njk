@@ -1,0 +1,23 @@
+{# Tab: Leaderboard (Deildarstjori only) #}
+<div class="tab-content" id="tab-leaderboard">
+  <div class="section-title">🏆 Stigatafla</div>
+
+  <div class="card">
+    <div class="form-group">
+      <label class="form-label">Tímabil</label>
+      <select class="form-select" id="leaderboardPeriod" onchange="loadLeaderboard()">
+        <option value="week">Þessi vika</option>
+        <option value="month" selected>Þessi mánuður</option>
+        <option value="year">Þetta skólaár</option>
+        <option value="all">Allt tímabil</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="leaderboardList">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>Sæki stigatöflu...</p>
+    </div>
+  </div>
+</div>

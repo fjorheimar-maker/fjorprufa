@@ -1,0 +1,82 @@
+{# Tab: Admin Notendur #}
+<div class="tab-content" id="tab-notendur">
+  <div class="section-header">
+    <div class="section-title">👷 Notendastjórnun</div>
+    <button class="btn" onclick="showAddUserModal()">+ Nýr notandi</button>
+  </div>
+
+  <div class="table-container">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Nafn</th>
+          <th>Notendanafn</th>
+          <th>Hlutverk</th>
+          <th>Stöð</th>
+          <th>Staða</th>
+          <th>Aðgerðir</th>
+        </tr>
+      </thead>
+      <tbody id="usersTableBody">
+        <tr>
+          <td colspan="6" style="text-align: center; padding: 40px;">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+              <p>Sæki notendur...</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{# User Modal #}
+<div class="modal" id="userModal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="userModalTitle">Bæta við notanda</h3>
+      <button class="modal-close" onclick="closeUserModal()">×</button>
+    </div>
+    <form id="userForm" onsubmit="saveUser(event)">
+      <div class="form-group">
+        <label class="form-label">Nafn</label>
+        <input type="text" class="form-input" id="userNafn" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notendanafn</label>
+        <input type="text" class="form-input" id="userUsername" required>
+      </div>
+      <div class="form-group" id="userPasswordGroup">
+        <label class="form-label">Lykilorð</label>
+        <input type="password" class="form-input" id="userPassword">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Hlutverk</label>
+        <select class="form-select" id="userHlutverk" onchange="onRoleChange()" required>
+          <option value="staff">Starfsmaður</option>
+          <option value="deildarstjori">Deildarstjóri</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div class="form-group" id="userCenterGroup">
+        <label class="form-label">Félagsmiðstöð</label>
+        <select class="form-select" id="userCenter">
+          <option value="">Veldu stöð</option>
+          <option value="HAFNOFELO">Fjör Hafnó</option>
+          <option value="STAPAFELO">Fjör Stapa</option>
+          <option value="AKURFELO">Fjör Akur</option>
+          <option value="HAALEITIFELO">Fjör Háaleiti</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Netfang (valkvæmt)</label>
+        <input type="email" class="form-input" id="userEmail">
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" onclick="closeUserModal()">Hætta við</button>
+        <button type="submit" class="btn">Vista</button>
+      </div>
+    </form>
+  </div>
+</div>

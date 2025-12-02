@@ -1,0 +1,110 @@
+{# Tab: Admin Nemendur #}
+<div class="tab-content" id="tab-nemendur">
+  <div class="section-header">
+    <div class="section-title">👥 Nemendastjórnun</div>
+    <button class="btn" onclick="showAddStudentModal()">+ Nýr nemandi</button>
+  </div>
+
+  <div class="search-filters" style="margin-bottom: 20px;">
+    <div class="form-row">
+      <div class="form-group" style="flex: 2;">
+        <input type="text" class="form-input" id="studentSearch" placeholder="Leita að nemanda..." oninput="filterStudents()">
+      </div>
+      <div class="form-group">
+        <select class="form-select" id="studentSchoolFilter" onchange="filterStudents()">
+          <option value="">Allir skólar</option>
+          <option value="AKUR">Akurskóli</option>
+          <option value="STAPA">Stapaskóli</option>
+          <option value="HAALEITI">Háleitisskóli</option>
+          <option value="MYLLA">Myllubakkaskóli</option>
+          <option value="NJARDVIK">Njarðvíkurskóli</option>
+          <option value="HEIDAR">Heiðarskóli</option>
+          <option value="HOLTA">Holtaskóli</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select class="form-select" id="studentGradeFilter" onchange="filterStudents()">
+          <option value="">Allir bekkir</option>
+          <option value="8">8. bekkur</option>
+          <option value="9">9. bekkur</option>
+          <option value="10">10. bekkur</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-info">
+    <span id="studentsCount">0 nemendur</span>
+    <button class="btn-secondary" onclick="exportStudentsCSV()">📥 Sækja CSV</button>
+  </div>
+
+  <div class="table-container">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Nafn</th>
+          <th>Kennitala</th>
+          <th>Skóli</th>
+          <th>Bekkur</th>
+          <th>Staða</th>
+          <th>Aðgerðir</th>
+        </tr>
+      </thead>
+      <tbody id="studentsTableBody">
+        <tr>
+          <td colspan="6" style="text-align: center; padding: 40px;">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+              <p>Sæki nemendur...</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{# Student Modal #}
+<div class="modal" id="studentModal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="studentModalTitle">Bæta við nemanda</h3>
+      <button class="modal-close" onclick="closeStudentModal()">×</button>
+    </div>
+    <form id="studentForm" onsubmit="saveStudent(event)">
+      <div class="form-group">
+        <label class="form-label">Nafn</label>
+        <input type="text" class="form-input" id="studentNafn" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Kennitala</label>
+        <input type="text" class="form-input" id="studentKennitala" placeholder="000000-0000">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Skóli</label>
+        <select class="form-select" id="studentSkoli" required>
+          <option value="">Veldu skóla</option>
+          <option value="AKUR">Akurskóli</option>
+          <option value="STAPA">Stapaskóli</option>
+          <option value="HAALEITI">Háleitisskóli</option>
+          <option value="MYLLA">Myllubakkaskóli</option>
+          <option value="NJARDVIK">Njarðvíkurskóli</option>
+          <option value="HEIDAR">Heiðarskóli</option>
+          <option value="HOLTA">Holtaskóli</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Bekkur</label>
+        <select class="form-select" id="studentBekkur" required>
+          <option value="8">8. bekkur</option>
+          <option value="9">9. bekkur</option>
+          <option value="10">10. bekkur</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" onclick="closeStudentModal()">Hætta við</button>
+        <button type="submit" class="btn">Vista</button>
+      </div>
+    </form>
+  </div>
+</div>

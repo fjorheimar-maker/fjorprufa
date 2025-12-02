@@ -1,0 +1,224 @@
+/* ============================================
+   ATTENDANCE COMPONENT
+   ============================================ */
+
+/* Date navigation */
+.date-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--color-card);
+  border-radius: 12px;
+}
+
+.date-display {
+  font-size: 1rem;
+  font-weight: 500;
+  min-width: 140px;
+  text-align: center;
+}
+
+.date-display.is-today {
+  color: var(--center-color);
+}
+
+/* Attendance list */
+.attendance-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.attendance-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--color-card);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.attendance-item:hover {
+  background: var(--color-bg);
+  transform: translateX(4px);
+}
+
+.attendance-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.attendance-time {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  min-width: 50px;
+}
+
+.attendance-name {
+  font-weight: 500;
+}
+
+.attendance-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.attendance-item-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.attendance-dagskrarlid {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  padding: 4px 10px;
+  border-radius: 12px;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.attendance-total {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--center-color);
+  min-width: 50px;
+  text-align: right;
+}
+
+.attendance-icon {
+  font-size: 1rem;
+  min-width: 32px;
+  text-align: center;
+}
+
+.attendance-icon.warning {
+  color: #eab308;
+}
+
+.attendance-icon.star {
+  color: #f59e0b;
+}
+
+.attendance-icon.streak {
+  color: #ef4444;
+}
+
+/* Legend */
+.attendance-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--color-bg);
+  border-radius: 10px;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-icon {
+  font-size: 1rem;
+}
+
+/* Breakdown */
+.breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.breakdown-item {
+  padding: 10px 16px;
+  background: var(--color-bg);
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.breakdown-label {
+  color: var(--color-text-muted);
+}
+
+.breakdown-value {
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+/* Previous entries */
+.previous-entries {
+  margin-top: 24px;
+}
+
+.previous-entry {
+  padding: 12px 16px;
+  background: var(--color-bg);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Nýlega skráð */
+.nylega-skrad {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.nylega-skrad h4 {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.nylega-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nylega-item:last-child {
+  border-bottom: none;
+}
+
+.nylega-time {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  min-width: 45px;
+}
+
+.nylega-info {
+  flex: 1;
+}
+
+.nylega-name {
+  font-weight: 500;
+}
+
+.nylega-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.nylega-check {
+  color: #27ae60;
+}

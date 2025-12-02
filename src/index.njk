@@ -1,0 +1,152 @@
+---
+title: Fjörlistinn
+layout: base.njk
+---
+
+{% block extraCss %}
+<style>
+  .install-prompt {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    background: var(--color-card);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: none;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-border);
+    z-index: 1000;
+  }
+
+  .install-prompt.show {
+    display: flex;
+  }
+
+  .install-prompt-text {
+    flex: 1;
+  }
+
+  .install-prompt-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .install-prompt-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .install-prompt-btn {
+    background: var(--center-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .install-prompt-close {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px;
+  }
+</style>
+{% endblock %}
+
+<div class="container">
+  {# VIEW 1: Center Selection #}
+  <div class="view active" id="centerSelectView">
+    <div class="header" style="text-align: center; margin-bottom: 32px;">
+      <h1 class="logo">Fjörlistinn</h1>
+      <p class="subtitle">Veldu félagsmiðstöð</p>
+    </div>
+
+    <div class="centers-grid" id="centersGrid">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Hleð...</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Tómstundamiðstöð Reykjanesbæjar</p>
+    </div>
+  </div>
+
+  {# VIEW 2: Role Selection #}
+  <div class="view" id="roleSelectView">
+    <button class="back-btn" onclick="goBack()">
+      ← Til baka
+    </button>
+
+    <div class="header" style="text-align: center; margin-bottom: 32px;">
+      <h1 class="logo">Fjörlistinn</h1>
+      <p class="subtitle">Veldu viðmót</p>
+      <p class="center-name" id="selectedCenterName"></p>
+    </div>
+
+    <div class="roles-grid">
+      <div class="role-card" onclick="goToRole('nemandi')">
+        <div class="role-icon">👤</div>
+        <div class="role-content">
+          <div class="role-title">Nemandi</div>
+          <div class="role-desc">Skrá mætingu + Mín síða</div>
+        </div>
+        <div class="role-arrow">→</div>
+      </div>
+
+      <div class="role-card" onclick="goToRole('starfsmadur')">
+        <div class="role-icon">👷</div>
+        <div class="role-content">
+          <div class="role-title">Starfsmaður</div>
+          <div class="role-desc">Mætingayfirlit og skráningar</div>
+        </div>
+        <div class="role-arrow">→</div>
+      </div>
+
+      <div class="role-card" onclick="goToRole('deildarstjori')">
+        <div class="role-icon">👔</div>
+        <div class="role-content">
+          <div class="role-title">Deildarstjóri</div>
+          <div class="role-desc">Ítarleg stjórnun og tölfræði</div>
+        </div>
+        <div class="role-arrow">→</div>
+      </div>
+
+      <div class="role-card" onclick="goToRole('admin')">
+        <div class="role-icon">⚙️</div>
+        <div class="role-content">
+          <div class="role-title">Admin</div>
+          <div class="role-desc">Kerfisstjórnun</div>
+        </div>
+        <div class="role-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Tómstundamiðstöð Reykjanesbæjar</p>
+    </div>
+  </div>
+</div>
+
+{# Install Prompt #}
+<div class="install-prompt" id="installPrompt">
+  <div class="install-prompt-text">
+    <div class="install-prompt-title">Setja upp Fjörlistinn</div>
+    <div class="install-prompt-desc">Bættu við heimaskjá fyrir fljótari aðgang</div>
+  </div>
+  <button class="install-prompt-btn" id="installBtn">Setja upp</button>
+  <button class="install-prompt-close" id="installClose">×</button>
+</div>
+
+{% block extraJs %}
+<script src="/js/pages/index/main.js"></script>
+{% endblock %}

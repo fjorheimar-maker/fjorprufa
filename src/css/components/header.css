@@ -1,0 +1,70 @@
+/* ============================================
+   HEADER COMPONENT
+   ============================================ */
+
+.header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--color-bg);
+  z-index: 50;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-center-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--center-color);
+}
+
+.header-date {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Header variant for nemandi */
+.header-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--center-color), #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.header-center {
+  font-size: 1.1rem;
+  color: var(--center-color);
+  font-weight: 600;
+}

@@ -1,0 +1,16 @@
+{# Staff Tabs Navigation #}
+<div class="tabs-container">
+  <div class="tabs">
+    <button class="tab active" data-tab="maeting">📋 Mæting dagsins</button>
+    <button class="tab" data-tab="tolfraedi">📊 Tölfræði</button>
+    <button class="tab" data-tab="midstig">📝 Miðstig</button>
+    <button class="tab" data-tab="uppfletting">🔍 Uppfletting</button>
+    <button class="tab" data-tab="virkni">👥 Virkni</button>
+    {% if showLeaderboard %}
+    <button class="tab" data-tab="leaderboard">🏆 Stigatafla</button>
+    {% endif %}
+    <button class="tab" data-tab="nyr-nemandi">➕ Nýr nemandi</button>
+    <button class="tab" data-tab="skra-maeting">✏️ Skrá mætingu</button>
+    <button class="tab" data-tab="kiosk">🔒 Kiosk</button>
+  </div>
+</div>

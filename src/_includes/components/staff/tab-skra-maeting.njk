@@ -1,0 +1,38 @@
+{# Tab: Skrá mætingu #}
+<div class="tab-content" id="tab-skra-maeting">
+  <div class="section-title">✏️ Skrá mætingu handvirkt</div>
+  
+  <div id="skraMessage"></div>
+  
+  <div class="skra-form">
+    <div class="form-group">
+      <label>📅 Dagsetning</label>
+      <input type="date" id="skraDagsetning" />
+    </div>
+    
+    <div class="form-group">
+      <label>🕐 Dagskrárliður</label>
+      <select id="skraDagskrarlid">
+        <option value="">Veldu dagskrárlið...</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>👤 Nemandi</label>
+      <div class="autocomplete-wrapper">
+        <input type="text" id="skraNemandi" placeholder="Byrjaðu að skrifa nafn..." autocomplete="off" />
+        <div class="autocomplete-results" id="autocompleteResults"></div>
+      </div>
+      <div id="selectedStudent"></div>
+    </div>
+    
+    <button class="btn-skra" id="btnSkraMaeting" disabled>✔ Skrá mætingu</button>
+  </div>
+  
+  <div class="nylega-skrad">
+    <h4>🕐 Nýlega skráð af þér</h4>
+    <div id="nylegaSkradList">
+      <p style="color: var(--color-text-muted); font-size: 0.9rem;">Engar skráningar enn...</p>
+    </div>
+  </div>
+</div>

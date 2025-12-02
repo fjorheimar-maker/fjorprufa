@@ -1,0 +1,145 @@
+{# Tab: Admin Stillingar #}
+<div class="tab-content" id="tab-stillingar">
+  <div class="section-title">⚙️ Kerfisstillingar</div>
+
+  {# Academic Year #}
+  <div class="settings-section">
+    <div class="settings-section-title">📅 Skólaár</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Upphaf skólaárs</label>
+        <input type="date" class="form-input" id="settingYearStart">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Lok skólaárs</label>
+        <input type="date" class="form-input" id="settingYearEnd">
+      </div>
+      <div class="form-group" style="align-self: flex-end;">
+        <button class="btn" onclick="saveAcademicYear()">Vista</button>
+      </div>
+    </div>
+  </div>
+
+  {# Feature Toggles #}
+  <div class="settings-section">
+    <div class="settings-section-title">🎛️ Eiginleikar</div>
+    
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">Stigatafla (Leaderboard)</div>
+        <div class="settings-description">Sýna stigatöflu á starfsmannaviðmóti</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="settingLeaderboard" onchange="toggleSetting('show_leaderboard', 'settingLeaderboard')">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">Gamification</div>
+        <div class="settings-description">Títlar, achievements og streaks fyrir nemendur</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="settingGamification" onchange="toggleSetting('enable_gamification', 'settingGamification')">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">Miðstigsmæting</div>
+        <div class="settings-description">Skrá mætingu 5.-7. bekkjar</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="settingMidstig" onchange="toggleSetting('enable_midstig', 'settingMidstig')">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">Kiosk mode</div>
+        <div class="settings-description">Leyfa sjálfsafgreiðslu á iPad</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="settingKiosk" onchange="toggleSetting('enable_kiosk', 'settingKiosk')">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  {# Schedule Management #}
+  <div class="settings-section">
+    <div class="settings-section-title" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>📋 Dagskrá</span>
+      <button class="btn-secondary" onclick="showAddScheduleModal()">+ Bæta við</button>
+    </div>
+    <div id="scheduleList">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Sæki dagskrá...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# Schedule Modal #}
+<div class="modal" id="scheduleModal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Bæta við dagskrárlið</h3>
+      <button class="modal-close" onclick="closeScheduleModal()">×</button>
+    </div>
+    <form id="scheduleForm" onsubmit="saveScheduleItem(event)">
+      <div class="form-group">
+        <label class="form-label">Félagsmiðstöð</label>
+        <select class="form-select" id="scheduleCenter" required>
+          <option value="">Veldu stöð</option>
+          <option value="HAFNOFELO">Fjör Hafnó</option>
+          <option value="STAPAFELO">Fjör Stapa</option>
+          <option value="AKURFELO">Fjör Akur</option>
+          <option value="HAALEITIFELO">Fjör Háaleiti</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Vikudagur</label>
+        <select class="form-select" id="scheduleDay" required>
+          <option value="Mánudagur">Mánudagur</option>
+          <option value="Þriðjudagur">Þriðjudagur</option>
+          <option value="Miðvikudagur">Miðvikudagur</option>
+          <option value="Fimmtudagur">Fimmtudagur</option>
+          <option value="Föstudagur">Föstudagur</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Heiti</label>
+        <input type="text" class="form-input" id="scheduleHeiti" placeholder="t.d. Almennt" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Byrjar</label>
+          <input type="time" class="form-input" id="scheduleStart" value="14:00" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Endar</label>
+          <input type="time" class="form-input" id="scheduleEnd" value="17:00" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tegund</label>
+        <select class="form-select" id="scheduleType">
+          <option value="almennt">Almennt</option>
+          <option value="klubbur">Klubbur</option>
+          <option value="ithrottir">Íþróttir</option>
+          <option value="list">List</option>
+          <option value="annad">Annað</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" onclick="closeScheduleModal()">Hætta við</button>
+        <button type="submit" class="btn">Vista</button>
+      </div>
+    </form>
+  </div>
+</div>

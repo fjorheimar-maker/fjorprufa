@@ -1,0 +1,171 @@
+/* ============================================
+   VIRKNI (ACTIVITY STATUS) COMPONENT
+   ============================================ */
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.activity-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.activity-card:hover {
+  transform: translateY(-2px);
+}
+
+.activity-card.selected {
+  border-color: var(--card-status-color);
+}
+
+.activity-card.virkir { --card-status-color: var(--color-virkir); }
+.activity-card.ad-detta { --card-status-color: var(--color-ad-detta); }
+.activity-card.nylega-haettir { --card-status-color: var(--color-nylega-haettir); }
+.activity-card.haettir { --card-status-color: var(--color-haettir); }
+.activity-card.ovirkir { --card-status-color: var(--color-ovirkir); }
+
+.activity-card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.activity-card-count {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--card-status-color);
+}
+
+.activity-card-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.activity-breakdown {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.activity-breakdown-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.activity-info-text {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 20px;
+}
+
+/* Midstig table */
+.midstig-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.midstig-table th,
+.midstig-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.midstig-table th {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.midstig-table th:first-child,
+.midstig-table td:first-child {
+  text-align: left;
+}
+
+.midstig-table input {
+  width: 60px;
+  padding: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.midstig-table input:focus {
+  outline: none;
+  border-color: var(--center-color);
+}
+
+.midstig-table .total {
+  font-weight: 700;
+  color: var(--center-color);
+}
+
+.midstig-table tfoot td {
+  font-weight: 600;
+  border-top: 2px solid var(--color-border);
+}
+
+/* Add student info */
+.add-student-form {
+  max-width: 400px;
+}
+
+.add-student-info {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--color-card);
+  border-radius: 12px;
+}
+
+/* Skrá form */
+.skra-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 500px;
+}
+
+.skra-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skra-form .form-group label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.skra-form .form-group input,
+.skra-form .form-group select {
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--color-card);
+  color: var(--color-text);
+}
+
+.skra-form .form-group input:focus,
+.skra-form .form-group select:focus {
+  outline: none;
+  border-color: var(--center-color);
+}

@@ -1,0 +1,314 @@
+/* ============================================
+   NEMANDI PAGE STYLES
+   ============================================ */
+
+/* Schedule status */
+.schedule-status {
+  margin-bottom: 24px;
+}
+
+.schedule-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  color: var(--color-text-muted);
+}
+
+.schedule-loading .loading-spinner {
+  width: 20px;
+  height: 20px;
+}
+
+.schedule-active,
+.schedule-inactive {
+  background: var(--color-bg);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.schedule-active {
+  border: 2px solid var(--color-success);
+}
+
+.schedule-active-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.schedule-active-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+.schedule-active-time {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.schedule-inactive {
+  border: 2px solid var(--color-border);
+}
+
+.schedule-inactive-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
+.schedule-inactive-text {
+  color: var(--color-text-muted);
+}
+
+/* Schedule multiple selection */
+.schedule-multiple {
+  margin-bottom: 24px;
+}
+
+.schedule-multiple-title {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.schedule-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.schedule-option:hover {
+  border-color: var(--center-color);
+}
+
+.schedule-option.selected {
+  border-color: var(--center-color);
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.schedule-option-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  position: relative;
+}
+
+.schedule-option.selected .schedule-option-radio {
+  border-color: var(--center-color);
+}
+
+.schedule-option.selected .schedule-option-radio::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: var(--center-color);
+  border-radius: 50%;
+}
+
+.schedule-option-info {
+  flex: 1;
+}
+
+.schedule-option-name {
+  font-weight: 600;
+}
+
+.schedule-option-time {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Next up section */
+.next-up {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--color-card);
+  border-radius: 12px;
+}
+
+.next-up-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.next-up-name {
+  font-weight: 600;
+}
+
+.next-up-time {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.next-up-countdown {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--center-color);
+  margin-top: 8px;
+}
+
+/* Success view */
+.success-view {
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 5rem;
+  margin-bottom: 24px;
+}
+
+.success-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.success-name {
+  font-size: 1.5rem;
+  color: var(--center-color);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.success-message {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+/* Gamification display */
+.gamification-card {
+  background: var(--color-bg);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.gamification-title {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--center-color), #9333ea);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.gamification-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.gamification-stat {
+  text-align: center;
+}
+
+.gamification-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--center-color);
+}
+
+.gamification-stat-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* Milestone celebration */
+.milestone-celebration {
+  background: linear-gradient(135deg, #f97316, #eab308);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: scaleIn 0.5s ease;
+}
+
+.milestone-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.milestone-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* Achievements */
+.achievements-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.achievement-badge {
+  background: var(--color-card);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.achievement-badge.new {
+  animation: scaleIn 0.3s ease;
+  border: 2px solid var(--center-color);
+}
+
+/* Mín síða button */
+.minsida-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.2s ease;
+}
+
+.minsida-btn:hover {
+  background: var(--color-card-hover);
+  border-color: var(--center-color);
+}
+
+/* Checkin disabled message */
+.checkin-disabled-msg {
+  text-align: center;
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  color: var(--color-error);
+  font-size: 0.9rem;
+  margin-top: 16px;
+}

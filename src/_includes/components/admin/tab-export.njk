@@ -1,0 +1,68 @@
+{# Tab: Admin Export #}
+<div class="tab-content" id="tab-export">
+  <div class="section-title">📤 Sækja gögn</div>
+
+  {# Date Range Filter #}
+  <div class="settings-section">
+    <div class="settings-section-title">📅 Tímabil</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Frá</label>
+        <input type="date" class="form-input" id="exportStartDate">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Til</label>
+        <input type="date" class="form-input" id="exportEndDate">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Stöð (valkvæmt)</label>
+        <select class="form-select" id="exportCenter">
+          <option value="">Allar stöðvar</option>
+          <option value="HAFNOFELO">Fjör Hafnó</option>
+          <option value="STAPAFELO">Fjör Stapa</option>
+          <option value="AKURFELO">Fjör Akur</option>
+          <option value="HAALEITIFELO">Fjör Háaleiti</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  {# Export Options #}
+  <div class="export-options">
+    <div class="export-card" onclick="exportAttendanceCSV()">
+      <div class="export-card-icon">📋</div>
+      <div class="export-card-title">Mætingagögn (CSV)</div>
+      <div class="export-card-desc">Allar mætingar með nafni, kennitölu, dagsetningu o.fl.</div>
+    </div>
+    
+    <div class="export-card" onclick="exportMidstigCSV()">
+      <div class="export-card-icon">📊</div>
+      <div class="export-card-title">Miðstigsmæting (CSV)</div>
+      <div class="export-card-desc">Mæting 5.-7. bekkjar eftir skólum</div>
+    </div>
+    
+    <div class="export-card" onclick="exportStudentsCSV()">
+      <div class="export-card-icon">👥</div>
+      <div class="export-card-title">Nemendaskrá (CSV)</div>
+      <div class="export-card-desc">Listi yfir alla nemendur</div>
+    </div>
+    
+    <div class="export-card" onclick="exportStatisticsSummary()">
+      <div class="export-card-icon">📈</div>
+      <div class="export-card-title">Tölfræðiyfirlit</div>
+      <div class="export-card-desc">Samantekt á helstu tölfræði</div>
+    </div>
+    
+    <div class="export-card" onclick="exportForPowerBI()">
+      <div class="export-card-icon">⚡</div>
+      <div class="export-card-title">PowerBI (JSON)</div>
+      <div class="export-card-desc">Öll gögn á JSON formi fyrir PowerBI</div>
+    </div>
+  </div>
+
+  {# Loading indicator #}
+  <div class="loading" id="exportLoading" style="display: none; margin-top: 24px;">
+    <div class="loading-spinner"></div>
+    <p>Undirbý gögn...</p>
+  </div>
+</div>

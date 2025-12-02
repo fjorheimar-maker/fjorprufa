@@ -1,0 +1,51 @@
+{# Tab: Admin Tölfræði #}
+<div class="tab-content" id="tab-tolfraedi">
+  <div class="section-title">📈 Tölfræði allra stöðva</div>
+  
+  <div class="form-row" style="margin-bottom: 24px;">
+    <div class="form-group">
+      <label class="form-label">Tímabil</label>
+      <select class="form-select" id="adminStatsPeriod" onchange="loadAdminStatistics()">
+        <option value="week">Þessi vika</option>
+        <option value="month" selected>Þessi mánuður</option>
+        <option value="year">Þetta ár</option>
+        <option value="all">Allt</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Félagsmiðstöð</label>
+      <select class="form-select" id="adminStatsCenter" onchange="loadAdminStatistics()">
+        <option value="">Allar stöðvar</option>
+        <option value="HAFNOFELO">Fjör Hafnó</option>
+        <option value="STAPAFELO">Fjör Stapa</option>
+        <option value="AKURFELO">Fjör Akur</option>
+        <option value="HAALEITIFELO">Fjör Háaleiti</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-value" id="adminTotalAttendance">-</div>
+      <div class="stat-label">Heildarmæting</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="adminUniqueStudents">-</div>
+      <div class="stat-label">Einstakir nemendur</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="adminAvgDaily">-</div>
+      <div class="stat-label">Meðaltal á dag</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <div class="section-title">📊 Mæting eftir skólum</div>
+    <div class="h-bar-chart" id="adminSchoolChart"></div>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <div class="section-title">📊 Mæting eftir bekkjum</div>
+    <div class="h-bar-chart" id="adminGradeChart"></div>
+  </div>
+</div>

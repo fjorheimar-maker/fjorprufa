@@ -1,0 +1,93 @@
+/* ============================================
+   CHARTS COMPONENT
+   ============================================ */
+
+.chart-container {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.chart-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Vertical bar chart */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 150px;
+  gap: 8px;
+}
+
+.bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 60px;
+}
+
+.bar {
+  width: 100%;
+  background: var(--center-color);
+  border-radius: 6px 6px 0 0;
+  min-height: 4px;
+  transition: height 0.3s ease;
+}
+
+.bar-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.bar-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Horizontal bar chart */
+.horizontal-bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.h-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.h-bar-label {
+  font-size: 0.9rem;
+  min-width: 120px;
+}
+
+.h-bar-container {
+  flex: 1;
+  height: 24px;
+  background: var(--color-bg);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.h-bar {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.h-bar-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 50px;
+  text-align: right;
+}

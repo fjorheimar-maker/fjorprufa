@@ -1,0 +1,51 @@
+{# Tab: Nýr nemandi #}
+<div class="tab-content" id="tab-nyr-nemandi">
+  <div class="section-title">➕ Bæta við nemanda</div>
+
+  <div class="add-student-info">
+    ℹ️ Notaðu þetta til að bæta við nemendum úr skólum utan Reykjanesbæjar. 
+    Nemandinn getur síðan merkt mætingu í öllum félagsmiðstöðvum.
+  </div>
+
+  <div class="card add-student-form">
+    <div class="form-group">
+      <label class="form-label">Nafn</label>
+      <input type="text" class="form-input" id="newStudentName" placeholder="Fullt nafn..." />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Skóli</label>
+      <select class="form-input" id="newStudentSchool" style="width: 100%;">
+        <option value="">Veldu skóla...</option>
+        <option value="Akurskóli">Akurskóli</option>
+        <option value="Stapaskóli">Stapaskóli</option>
+        <option value="Háleitisskóli">Háleitisskóli</option>
+        <option value="Myllubakkaskóli">Myllubakkaskóli</option>
+        <option value="Njarðvíkurskóli">Njarðvíkurskóli</option>
+        <option value="Heiðarskóli">Heiðarskóli</option>
+        <option value="Holtaskóli">Holtaskóli</option>
+        <option value="Aðrir skólar">Aðrir skólar</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="customSchoolGroup" style="display: none;">
+      <label class="form-label">Heiti skóla</label>
+      <input type="text" class="form-input" id="customSchoolName" placeholder="Sláðu inn heiti skóla..." />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Bekkur</label>
+      <select class="form-input" id="newStudentGrade" style="width: 100%;">
+        <option value="8">8. bekkur</option>
+        <option value="9">9. bekkur</option>
+        <option value="10">10. bekkur</option>
+      </select>
+    </div>
+
+    <button class="btn" onclick="addNewStudent()">Bæta við nemanda</button>
+
+    <div class="success-message" id="addStudentSuccess">
+      ✅ Nemandi bættur við! Lykilorð: <span id="newStudentPassword"></span>
+    </div>
+  </div>
+</div>

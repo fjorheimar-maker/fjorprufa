@@ -1,0 +1,87 @@
+/* ============================================
+   INDEX PAGE STYLES
+   ============================================ */
+
+/* Index specific container */
+.index-container {
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Header for index */
+.index-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* Install prompt */
+.install-prompt {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: none;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-border);
+  z-index: 1000;
+}
+
+.install-prompt.show {
+  display: flex;
+}
+
+.install-prompt-text {
+  flex: 1;
+}
+
+.install-prompt-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.install-prompt-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.install-prompt-btn {
+  background: var(--center-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.install-prompt-close {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Center card color variants */
+.center-card.rainbow::before {
+  background: var(--color-hafno);
+}
+
+.center-card.purple::before {
+  background: var(--color-stapa);
+}
+
+.center-card.yellow::before {
+  background: var(--color-akur);
+}
+
+.center-card.pink::before {
+  background: var(--color-haaleiti);
+}

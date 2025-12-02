@@ -1,0 +1,40 @@
+{# Tab: Admin Yfirlit #}
+<div class="tab-content active" id="tab-yfirlit">
+  <div class="section-title">📊 Heildaryfirlit</div>
+  
+  <div class="overview-grid" id="overviewGrid">
+    <div class="overview-card" style="--card-accent: #22c55e;">
+      <div class="overview-card-icon">👥</div>
+      <div class="overview-card-value">-</div>
+      <div class="overview-card-label">Nemendur samtals</div>
+    </div>
+    <div class="overview-card" style="--card-accent: #3b82f6;">
+      <div class="overview-card-icon">📋</div>
+      <div class="overview-card-value">-</div>
+      <div class="overview-card-label">Mæting í dag</div>
+    </div>
+    <div class="overview-card" style="--card-accent: #8B5CF6;">
+      <div class="overview-card-icon">📊</div>
+      <div class="overview-card-value">-</div>
+      <div class="overview-card-label">Þessi vika</div>
+    </div>
+    <div class="overview-card" style="--card-accent: #f97316;">
+      <div class="overview-card-icon">👷</div>
+      <div class="overview-card-value">-</div>
+      <div class="overview-card-label">Virkir notendur</div>
+    </div>
+  </div>
+
+  <div class="section-title">🏢 Samanburður stöðva</div>
+  <div class="centers-comparison" id="centersComparison">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>Sæki gögn...</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <div class="section-title">📈 Mæting síðustu 4 vikur</div>
+    <div class="bar-chart" id="adminWeeklyChart"></div>
+  </div>
+</div>

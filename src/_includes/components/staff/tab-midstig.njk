@@ -1,0 +1,37 @@
+{# Tab: Miðstig #}
+<div class="tab-content" id="tab-midstig">
+  <div class="section-title">📝 Skrá miðstigsmætingu (5.-7. bekkur)</div>
+
+  <div class="card">
+    <table class="midstig-table">
+      <thead>
+        <tr>
+          <th>Skóli</th>
+          <th>5. bekk</th>
+          <th>6. bekk</th>
+          <th>7. bekk</th>
+          <th>Samtals</th>
+        </tr>
+      </thead>
+      <tbody id="midstigTableBody">
+        {# Populated by JavaScript #}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Samtals</td>
+          <td id="midstigTotal5">0</td>
+          <td id="midstigTotal6">0</td>
+          <td id="midstigTotal7">0</td>
+          <td id="midstigTotalAll">0</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <button class="btn" style="margin-top: 20px;" onclick="submitMidstig()">Skrá miðstigsmætingu</button>
+  </div>
+
+  <div class="previous-entries">
+    <div class="section-title">🕐 Fyrri skráningar í dag</div>
+    <div id="previousMidstig"></div>
+  </div>
+</div>

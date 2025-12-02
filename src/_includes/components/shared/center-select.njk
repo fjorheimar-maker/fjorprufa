@@ -1,0 +1,29 @@
+{# Center Selection View #}
+<div class="login-view" id="centerSelectView">
+  <div class="login-card" style="max-width: 500px;">
+    <div class="login-header">
+      <div class="login-icon">📍</div>
+      <h1 class="login-title">{{ pageTitle | default('Starfsmannasvæði') }}</h1>
+      <p style="color: var(--color-text-muted); margin-top: 8px;">Veldu félagsmiðstöð</p>
+    </div>
+
+    <div class="center-select-grid">
+      <button class="center-select-btn" data-center="HAFNOFELO" style="--btn-color: #8B5CF6; background: linear-gradient(135deg, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6, #ec4899);">
+        <span class="center-select-name">Fjör Hafnó</span>
+      </button>
+      <button class="center-select-btn" data-center="STAPAFELO" style="--btn-color: #8B5CF6;">
+        <span class="center-select-name">Fjör Stapa</span>
+      </button>
+      <button class="center-select-btn" data-center="AKURFELO" style="--btn-color: #EAB308;">
+        <span class="center-select-name">Fjör Akur</span>
+      </button>
+      <button class="center-select-btn" data-center="HAALEITIFELO" style="--btn-color: #EC4899;">
+        <span class="center-select-name">Fjör Háaleiti</span>
+      </button>
+    </div>
+
+    <div class="login-footer">
+      <a href="index.html">← Til baka á forsíðu</a>
+    </div>
+  </div>
+</div>

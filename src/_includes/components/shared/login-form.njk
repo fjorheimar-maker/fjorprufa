@@ -1,0 +1,27 @@
+{# Login Form View #}
+<div class="login-view" id="loginView" style="display: none;">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-icon">🔐</div>
+      <h1 class="login-title">{{ pageTitle | default('Starfsmannasvæði') }}</h1>
+      <p class="login-center-name" id="loginCenterName">Fjörlistinn</p>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label class="form-label">Lykilorð</label>
+        <input type="password" class="form-input" id="loginPassword" placeholder="Lykilorð stöðvarinnar..." required />
+      </div>
+
+      <button type="submit" class="btn" id="loginBtn">Skrá inn</button>
+    </form>
+
+    <div class="login-error" id="loginError">
+      Rangt lykilorð
+    </div>
+
+    <div class="login-footer">
+      <a href="index.html">← Til baka á forsíðu</a>
+    </div>
+  </div>
+</div>

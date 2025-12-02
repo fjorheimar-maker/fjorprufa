@@ -1,0 +1,55 @@
+---
+title: Starfsmannasvæði
+layout: base.njk
+pageTitle: Starfsmannasvæði
+showLeaderboard: false
+---
+
+{% block extraCss %}
+<link rel="stylesheet" href="/css/components/attendance.css">
+<link rel="stylesheet" href="/css/components/calendar.css">
+<link rel="stylesheet" href="/css/components/charts.css">
+<link rel="stylesheet" href="/css/components/student-popup.css">
+<link rel="stylesheet" href="/css/components/autocomplete.css">
+<link rel="stylesheet" href="/css/components/virkni.css">
+<link rel="stylesheet" href="/css/pages/staff.css">
+{% endblock %}
+
+{% include "components/shared/center-select.njk" %}
+{% include "components/shared/login-form.njk" %}
+
+<div class="main-view" id="mainView">
+  {% include "components/shared/header.njk" %}
+  {% include "components/staff/tabs-nav.njk" %}
+  
+  <div class="content">
+    {% include "components/staff/tab-maeting.njk" %}
+    {% include "components/staff/tab-tolfraedi.njk" %}
+    {% include "components/staff/tab-midstig.njk" %}
+    {% include "components/staff/tab-uppfletting.njk" %}
+    {% include "components/staff/tab-virkni.njk" %}
+    {% include "components/staff/tab-nyr-nemandi.njk" %}
+    {% include "components/staff/tab-skra-maeting.njk" %}
+    {% include "components/staff/tab-kiosk.njk" %}
+  </div>
+</div>
+
+{% include "components/shared/student-popup.njk" %}
+
+{% block extraJs %}
+<script src="/js/components/tabs.js"></script>
+<script src="/js/components/calendar.js"></script>
+<script src="/js/components/student-popup.js"></script>
+<script src="/js/pages/staff/init.js"></script>
+<script src="/js/pages/staff/maeting.js"></script>
+<script src="/js/pages/staff/tolfraedi.js"></script>
+<script src="/js/pages/staff/midstig.js"></script>
+<script src="/js/pages/staff/uppfletting.js"></script>
+<script src="/js/pages/staff/virkni.js"></script>
+<script src="/js/pages/staff/skra-maeting.js"></script>
+
+<script>
+  // Initialize
+  init();
+</script>
+{% endblock %}

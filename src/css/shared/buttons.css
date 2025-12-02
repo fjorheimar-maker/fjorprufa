@@ -1,0 +1,149 @@
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  background: var(--center-color);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-card-hover);
+}
+
+.btn-small {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.btn-large {
+  padding: 18px 32px;
+  font-size: 1.1rem;
+}
+
+/* Back button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 24px;
+  font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+  color: var(--color-text);
+}
+
+/* Logout button */
+.logout-btn {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: var(--color-card-hover);
+  color: var(--color-text);
+}
+
+/* Skrá mætingu button */
+.btn-skra {
+  padding: 14px 24px;
+  background: var(--center-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn-skra:hover {
+  opacity: 0.9;
+}
+
+.btn-skra:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Date navigation buttons */
+.date-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.date-nav-btn:hover:not(:disabled) {
+  background: var(--center-color);
+  color: white;
+}
+
+.date-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Clear all button */
+.clear-all-btn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text-muted);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.clear-all-btn:hover {
+  background: var(--color-card-hover);
+  color: var(--color-text);
+}
