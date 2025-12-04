@@ -3,8 +3,9 @@ title: Kiosk - Fjörlistinn
 layout: base.njk
 ---
 
-{# Page-specific CSS #}
+{% block extraCss %}
 <link rel="stylesheet" href="/css/pages/kiosk.css">
+{% endblock %}
 
 <div class="kiosk-page">
   {# Header #}
@@ -28,10 +29,6 @@ layout: base.njk
   <button class="kiosk-exit-trigger" id="kioskExitTrigger"></button>
 </div>
 
-{# Page JS #}
-<script src="/js/shared/config.js"></script>
-<script src="/js/shared/utils.js"></script>
-<script src="/js/shared/api.js"></script>
-<script src="/js/shared/state.js"></script>
-<script src="/js/shared/auth.js"></script>
+{% block extraJs %}
 <script src="/js/pages/kiosk/main.js"></script>
+{% endblock %}

@@ -114,10 +114,10 @@ function goToRole(role) {
   if (!selectedCenter) return;
 
   const urls = {
-    'nemandi': `nemandi.html?center=${selectedCenter}`,
-    'starfsmadur': `starfsmadur.html?center=${selectedCenter}`,
-    'deildarstjori': `deildarstjori.html?center=${selectedCenter}`,
-    'admin': `admin.html?center=${selectedCenter}`
+    'nemandi': `/nemandi/?center=${selectedCenter}`,
+    'starfsmadur': `/starfsmadur/?center=${selectedCenter}`,
+    'deildarstjori': `/deildarstjori/?center=${selectedCenter}`,
+    'admin': `/admin/?center=${selectedCenter}`
   };
 
   window.location.href = urls[role];
@@ -151,5 +151,5 @@ document.getElementById('installClose')?.addEventListener('click', () => {
   localStorage.setItem('installDismissed', 'true');
 });
 
-// Start
-init();
+// Start - bíða eftir að DOM og önnur scripts hafi loadað
+document.addEventListener('DOMContentLoaded', init);

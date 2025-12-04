@@ -142,7 +142,7 @@ async function loadPreviousMidstig() {
     const container = document.getElementById('previousMidstig');
     if (!container) return;
     
-    if (!data || data.length === 0) {
+    if (!data || !Array.isArray(data) || data.length === 0) {
       container.innerHTML = '<p class="previous-entry">Engar fyrri skráningar í dag</p>';
       return;
     }

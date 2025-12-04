@@ -1,171 +1,101 @@
 /* ============================================
-   STAFF - NÝR NEMANDI
-   Add new student form handling
+   NYR NEMANDI - Add new student functionality
    ============================================ */
 
 /**
- * Setup new student form
+ * Setup school dropdown listener
  */
-function setupNyrNemandaForm() {
-  const form = document.getElementById('nyrNemandaForm');
-  if (form) {
-    form.addEventListener('submit', handleAddStudent);
-  }
+function setupSchoolDropdown() {
+  const schoolSelect = document.getElementById('newStudentSchool');
+  const customSchoolGroup = document.getElementById('customSchoolGroup');
+  
+  if (!schoolSelect || !customSchoolGroup) return;
+  
+  schoolSelect.addEventListener('change', () => {
+    if (schoolSelect.value === 'Aðrir skólar') {
+      customSchoolGroup.style.display = 'block';
+    } else {
+      customSchoolGroup.style.display = 'none';
+      document.getElementById('customSchoolName').value = '';
+    }
+  });
 }
 
 /**
- * Handle add student form submission
+ * Add new student
  */
-async function handleAddStudent(e) {
-  e.preventDefault();
+async function addNewStudent() {
+  const nameInput = document.getElementById('newStudentName');
+  const schoolSelect = document.getElementById('newStudentSchool');
+  const customSchoolInput = document.getElementById('customSchoolName');
+  const gradeSelect = document.getElementById('newStudentGrade');
+  const successDiv = document.getElementById('addStudentSuccess');
+  const passwordSpan = document.getElementById('newStudentPassword');
   
-  const form = e.target;
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const successMsg = document.getElementById('nyrNemandaSuccess');
-  const errorMsg = document.getElementById('nyrNemandaError');
+  // Validation
+  const nafn = nameInput?.value?.trim();
+  let skoli = schoolSelect?.value;
+  const bekkur = gradeSelect?.value;
   
-  // Get form data
-  const data = {
-    nafn: document.getElementById('nyrNafn')?.value.trim(),
-    student_id: document.getElementById('nyrKennitala')?.value.trim(),
-    skoli: document.getElementById('nyrSkoli')?.value,
-    bekkur: document.getElementById('nyrBekkur')?.value,
-    password: document.getElementById('nyrPassword')?.value || generatePin()
-  };
-  
-  // Validate
-  if (!data.nafn) {
-    showFormError('Vinsamlegast sláðu inn nafn');
+  if (!nafn) {
+    alert('Vinsamlegast sláðu inn nafn');
     return;
   }
   
-  if (!data.skoli) {
-    showFormError('Vinsamlegast veldu skóla');
+  if (!skoli) {
+    alert('Vinsamlegast veldu skóla');
     return;
   }
   
-  // Hide messages
-  if (successMsg) successMsg.style.display = 'none';
-  if (errorMsg) errorMsg.style.display = 'none';
-  
-  // Disable button
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Bæti við...';
+  // Use custom school name if "Aðrir skólar" selected
+  if (skoli === 'Aðrir skólar') {
+    skoli = customSchoolInput?.value?.trim();
+    if (!skoli) {
+      alert('Vinsamlegast sláðu inn heiti skóla');
+      return;
+    }
   }
   
   try {
-    const result = await apiPost('addStudent', data);
+    const response = await apiPost('addStudent', {
+      nafn: nafn,
+      skoli: skoli,
+      bekkur: bekkur,
+      center_id: centerId
+    });
     
-    if (result.status === 'success') {
-      // Show success
-      if (successMsg) {
-        successMsg.textContent = `✅ ${data.nafn} hefur verið bætt við! PIN: ${data.password}`;
-        successMsg.style.display = 'block';
+    if (response.status === 'success') {
+      // Show success message with password
+      if (successDiv) {
+        successDiv.style.display = 'block';
+        if (passwordSpan) {
+          passwordSpan.textContent = response.password || response.student?.password || '----';
+        }
       }
       
-      // Reset form
-      form.reset();
+      // Clear form
+      nameInput.value = '';
+      schoolSelect.value = '';
+      if (customSchoolInput) customSchoolInput.value = '';
+      document.getElementById('customSchoolGroup').style.display = 'none';
       
       // Reload students list
       if (typeof loadStudents === 'function') {
         loadStudents();
       }
       
-      // Auto-hide success after 5 seconds
+      // Hide success after 10 seconds
       setTimeout(() => {
-        if (successMsg) successMsg.style.display = 'none';
-      }, 5000);
+        if (successDiv) successDiv.style.display = 'none';
+      }, 10000);
     } else {
-      showFormError(result.message || 'Villa við að bæta við nemanda');
+      alert(response.message || 'Villa við að bæta við nemanda');
     }
   } catch (err) {
     console.error('Villa:', err);
-    showFormError('Villa við að bæta við nemanda');
-  } finally {
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Bæta við';
-    }
+    alert('Villa við að bæta við nemanda');
   }
 }
 
-/**
- * Show form error message
- */
-function showFormError(message) {
-  const errorMsg = document.getElementById('nyrNemandaError');
-  if (errorMsg) {
-    errorMsg.textContent = message;
-    errorMsg.style.display = 'block';
-  }
-}
-
-/**
- * Generate random 4-digit PIN
- */
-function generatePin() {
-  return String(Math.floor(1000 + Math.random() * 9000));
-}
-
-/**
- * Auto-fill school based on center
- */
-function autoFillSchool() {
-  const schoolSelect = document.getElementById('nyrSkoli');
-  if (!schoolSelect || !centerId) return;
-  
-  // Map centers to primary schools
-  const centerSchools = {
-    'HAFNOFELO': 'NJARDVIK',
-    'AKURFELO': 'AKUR',
-    'STAPAFELO': 'STAPA',
-    'HAALEITIFELO': 'HAALEITI'
-  };
-  
-  const defaultSchool = centerSchools[centerId];
-  if (defaultSchool) {
-    schoolSelect.value = defaultSchool;
-  }
-}
-
-/**
- * Validate kennitala format
- */
-function validateKennitala(kt) {
-  if (!kt) return true; // Optional field
-  
-  // Remove hyphen and spaces
-  const clean = kt.replace(/[-\s]/g, '');
-  
-  // Should be 10 digits
-  if (!/^\d{10}$/.test(clean)) {
-    return false;
-  }
-  
-  return true;
-}
-
-/**
- * Format kennitala with hyphen
- */
-function formatKennitala(input) {
-  let value = input.value.replace(/\D/g, '');
-  
-  if (value.length > 6) {
-    value = value.slice(0, 6) + '-' + value.slice(6, 10);
-  }
-  
-  input.value = value;
-}
-
-// Initialize when DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  setupNyrNemandaForm();
-  
-  // Add kennitala formatting
-  const ktInput = document.getElementById('nyrKennitala');
-  if (ktInput) {
-    ktInput.addEventListener('input', () => formatKennitala(ktInput));
-  }
-});
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', setupSchoolDropdown);

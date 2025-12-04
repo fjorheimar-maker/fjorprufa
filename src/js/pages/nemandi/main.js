@@ -3,10 +3,8 @@
    ============================================ */
 
 // State
-let students = [];
 let selectedStudent = null;
 let currentScheduleItem = null;
-let scheduleData = [];
 
 // DOM elements
 const centerView = document.getElementById('centerView');
@@ -262,4 +260,4 @@ function resetToNameInput() {
 }
 
 // Start
-init();
+document.addEventListener('DOMContentLoaded', init);

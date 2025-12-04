@@ -290,5 +290,5 @@ function renderNylegaSkrad() {
  * Open kiosk mode
  */
 function openKioskMode() {
-  window.location.href = `kiosk.html?center=${centerId}`;
+  window.location.href =  `/kiosk/?center=${centerId}`;
 }

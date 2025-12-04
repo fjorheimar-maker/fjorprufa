@@ -8,7 +8,9 @@
 async function loadActivityStatus() {
   try {
     const data = await apiGet('activityStatus', { center_id: centerId });
-    
+    console.log('loadActivityStatus keyrir?');
+    console.log('Virkni gögn:', data);
+
     if (!data || data.status === 'error') return;
     
     activityData = data;
@@ -19,12 +21,15 @@ async function loadActivityStatus() {
     const countNylegaHaettir = document.getElementById('countNylegaHaettir');
     const countHaettir = document.getElementById('countHaettir');
     const countOvirkir = document.getElementById('countOvirkir');
+
+    console.log('Element countVirkir:', countVirkir);
+    console.log('Setting to:', data.counts?.virkir);
     
-    if (countVirkir) countVirkir.textContent = data.virkir?.count || 0;
-    if (countAdDetta) countAdDetta.textContent = data.ad_detta?.count || 0;
-    if (countNylegaHaettir) countNylegaHaettir.textContent = data.nylega_haettir?.count || 0;
-    if (countHaettir) countHaettir.textContent = data.haettir?.count || 0;
-    if (countOvirkir) countOvirkir.textContent = data.ovirkir?.count || 0;
+    if (countVirkir) countVirkir.textContent = data.counts?.virkir || 0;
+    if (countAdDetta) countAdDetta.textContent = data.counts?.ad_detta || 0;
+    if (countNylegaHaettir) countNylegaHaettir.textContent = data.counts?.nylega_haettir || 0;
+    if (countHaettir) countHaettir.textContent = data.counts?.haettir || 0;
+    if (countOvirkir) countOvirkir.textContent = data.counts?.ovirkir || 0;
     
     // Setup click handlers
     document.querySelectorAll('.activity-card').forEach(card => {
@@ -50,8 +55,8 @@ function showActivityBreakdown(status) {
   const container = document.getElementById('activityBreakdown');
   if (!container || !activityData) return;
   
-  const statusData = activityData[status];
-  if (!statusData || !statusData.bySchool) {
+  const bySchool = activityData.countsBySchool?.[status];
+  if (!bySchool) {
     container.innerHTML = '<div class="activity-info-text">Engin gögn</div>';
     return;
   }
@@ -64,7 +69,7 @@ function showActivityBreakdown(status) {
     'ovirkir': 'Óvirkir'
   };
   
-  const entries = Object.entries(statusData.bySchool).sort((a, b) => b[1] - a[1]);
+  const entries = Object.entries(bySchool).sort((a, b) => b[1] - a[1]);
   const maxValue = entries.length > 0 ? entries[0][1] : 0;
   
   container.innerHTML = `

@@ -10,41 +10,41 @@ const CENTER_STYLES = {
     color: '#8B5CF6', 
     name: 'Fjör Hafnó',
     colorClass: 'rainbow',
-    schools: 'MyllubakkaskÓli • NjarðvÍkurskÓli • HeiðarskÓli • HoltaskÓli'
+    schools: 'MyllubakkaskÓli • Njarðvíkurskóli • Heiðarskóli • Holtaskóli'
   },
   'STAPAFELO': { 
     color: '#8B5CF6', 
     name: 'Fjör Stapa',
     colorClass: 'purple',
-    schools: 'StapaskÓli'
+    schools: 'Stapaskóli'
   },
   'AKURFELO': { 
     color: '#EAB308', 
     name: 'Fjör Akur',
     colorClass: 'yellow',
-    schools: 'AkurskÓli'
+    schools: 'Akurskóli'
   },
   'HAALEITIFELO': { 
     color: '#EC4899', 
     name: 'Fjör Háaleiti',
     colorClass: 'pink',
-    schools: 'HáaleitisskÓli'
+    schools: 'Háaleitisskóli'
   }
 };
 
 const SCHOOLS = [
-  'AkurskÓli', 
-  'StapaskÓli', 
-  'HáaleitisskÓli', 
-  'MyllubakkaskÓli',
-  'NjarðvÍkurskÓli', 
-  'HeiðarskÓli', 
-  'HoltaskÓli'
+  'Akurskóli', 
+  'Stapaskóli', 
+  'Háaleitisskóli', 
+  'Myllubakkaskóli',
+  'Njarðvíkurskóli', 
+  'Heiðarskóli', 
+  'Holtaskóli'
 ];
 
 const TITLES = [
-  { min: 1, max: 4, name: 'NÝliði' },
-  { min: 5, max: 9, name: 'FjörgÆðingur' },
+  { min: 1, max: 4, name: 'Nýliði' },
+  { min: 5, max: 9, name: 'Fjörgæðingur' },
   { min: 10, max: 24, name: 'Fjörvinur' },
   { min: 25, max: 49, name: 'Fjörstjarna' },
   { min: 50, max: 99, name: 'Fjörhetja' },
@@ -74,10 +74,8 @@ const ACHIEVEMENTS = {
 };
 
 const monthNames = [
-  'JanÚar', 'FebrÚar', 'Mars', 'AprÍl', 'MaÍ', 'JÚnÍ',
-  'JÚlÍ', 'ÁgÚst', 'September', 'OktÓber', 'NÓvember', 'Desember'
+  'Janúar', 'Febrúar', 'Mars', 'Apríl', 'Maí', 'Júní',
+  'Júlí', 'Ágúst', 'September', 'Október', 'Nóvember', 'Desember'
 ];
 
 const dayNames = ['Sunnudagur', 'Mánudagur', 'Þriðjudagur', 'Miðvikudagur', 'Fimmtudagur', 'Föstudagur', 'Laugardagur'];
-
-console.log('Config.js loaded!');

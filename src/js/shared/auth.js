@@ -90,7 +90,7 @@ function logout() {
  */
 function adminLogout() {
   clearAdminSession();
-  window.location.href = 'index.html';
+  window.location.href = '/';
 }
 
 /**

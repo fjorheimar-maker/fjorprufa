@@ -285,4 +285,4 @@ async function exportStudents() {
 }
 
 // Start
-init();
+document.addEventListener('DOMContentLoaded', init);

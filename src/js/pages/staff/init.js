@@ -61,7 +61,7 @@ function showCenterSelect() {
     btn.addEventListener('click', () => {
       const selectedCenter = btn.dataset.center;
       // Redirect to same page with center param
-      const pageName = window.location.pathname.split('/').pop() || 'starfsmadur.html';
+      const pageName = window.location.pathname.split('/').pop() || '/starfsmadur/';
       window.location.href = `${pageName}?center=${selectedCenter}`;
     });
   });
@@ -109,6 +109,7 @@ function showMainView() {
  * Load all data after login
  */
 async function loadAllData() {
+  console.log('loadAllData called');
   updateDateDisplay();
   
   await Promise.all([
@@ -162,3 +163,6 @@ setInterval(() => {
   loadAttendanceToday();
   loadScheduleNow();
 }, 300000);
+
+// Start
+document.addEventListener('DOMContentLoaded', init);

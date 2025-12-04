@@ -1,6 +1,27 @@
 /* ============================================
    INDEX PAGE STYLES
    ============================================ */
+   
+/* Views */
+.view {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.view.active {
+  display: flex;
+}
+
+/* Container */
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
 
 /* Index specific container */
 .index-container {

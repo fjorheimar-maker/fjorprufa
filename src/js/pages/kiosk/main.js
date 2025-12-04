@@ -19,7 +19,7 @@ async function initKiosk() {
   
   if (!centerId) {
     alert('Engin stöð valin');
-    window.location.href = 'index.html';
+    window.location.href = '/';
     return;
   }
   
@@ -484,7 +484,7 @@ async function exitKiosk() {
     const result = await staffLogin(centerId.toLowerCase().replace('felo', '') + '_staff', password);
     
     if (result.status === 'success') {
-      window.location.href = `starfsmadur.html?center=${centerId}`;
+      window.location.href = `/starfsmadur/?center=${centerId}`;
     } else {
       alert('Rangt lykilorð');
     }
