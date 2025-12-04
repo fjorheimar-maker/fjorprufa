@@ -1,0 +1,227 @@
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Stat cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--center-color);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+.stat-change {
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+
+.stat-change.positive {
+  color: var(--color-success);
+}
+
+.stat-change.negative {
+  color: var(--color-error);
+}
+
+/* Section title */
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Current activity card */
+.current-activity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--color-card);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.activity-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity-icon {
+  font-size: 1.5rem;
+}
+
+.activity-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.activity-time {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.activity-count {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--center-color);
+}
+
+.activity-count-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* Center selection cards */
+.center-card {
+  position: relative;
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  overflow: hidden;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.center-card::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--card-color);
+  flex-shrink: 0;
+}
+
+.center-card:hover {
+  background: var(--color-card-hover);
+  transform: translateX(4px);
+}
+
+.center-card:active {
+  transform: scale(0.98);
+}
+
+.center-card-content {
+  flex: 1;
+}
+
+.center-card-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.center-card-schools {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.center-card-arrow {
+  font-size: 1.2rem;
+  opacity: 0.3;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.center-card:hover .center-card-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Role cards */
+.role-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid transparent;
+}
+
+.role-card:hover {
+  background: var(--color-card-hover);
+  transform: translateX(4px);
+}
+
+.role-card:active {
+  transform: scale(0.98);
+}
+
+.role-icon {
+  font-size: 1.8rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border-radius: 12px;
+}
+
+.role-content {
+  flex: 1;
+}
+
+.role-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.role-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.role-arrow {
+  font-size: 1.2rem;
+  opacity: 0.3;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.role-card:hover .role-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}

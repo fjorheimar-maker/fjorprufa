@@ -1,0 +1,188 @@
+/* ============================================
+   LOGIN COMPONENT
+   ============================================ */
+
+.login-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  background: var(--color-card);
+  border-radius: 24px;
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.login-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.login-center-name {
+  font-size: 1.1rem;
+  color: var(--center-color);
+  font-weight: 600;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  color: var(--center-color);
+  font-weight: 600;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.login-footer a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.login-footer a:hover {
+  color: var(--color-text);
+}
+
+/* Center selection grid */
+.center-select-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.center-select-btn {
+  padding: 24px 16px;
+  background: var(--btn-color, var(--color-card));
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.center-select-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.center-select-name {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Centers grid (index page) */
+.centers-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.roles-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Center buttons (nemandi page) */
+.center-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.center-btn {
+  padding: 24px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.center-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.center-btn:active {
+  transform: translateY(-2px);
+}
+
+.center-btn-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.center-name {
+  font-size: 1.1rem;
+  color: var(--center-color);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  margin-top: 32px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 400px) {
+  .logo {
+    font-size: 2.2rem;
+  }
+  
+  .center-card, .role-card {
+    padding: 16px 20px;
+  }
+
+  .role-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}

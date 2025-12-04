@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fjörlistinn - Fjörlistinn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="Mætingarkerfi fyrir félagsmiðstöðvar Reykjanesbæjar" />
+  <meta name="theme-color" content="#8B5CF6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Fjörlistinn" />
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/icon.svg" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/css/shared/base.css">
+  <link rel="stylesheet" href="/css/shared/buttons.css">
+  <link rel="stylesheet" href="/css/shared/forms.css">
+  <link rel="stylesheet" href="/css/shared/cards.css">
+  <link rel="stylesheet" href="/css/shared/loading.css">
+  <link rel="stylesheet" href="/css/shared/modals.css">
+  
+  <!-- Component CSS -->
+  <link rel="stylesheet" href="/css/components/login.css">
+  <link rel="stylesheet" href="/css/components/header.css">
+  <link rel="stylesheet" href="/css/components/tabs.css">
+  
+  
+</head>
+<body>
+  
+
+<link rel="stylesheet" href="/css/pages/index.css">
+<style>
+  .install-prompt {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    background: var(--color-card);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: none;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-border);
+    z-index: 1000;
+  }
+
+  .install-prompt.show {
+    display: flex;
+  }
+
+  .install-prompt-text {
+    flex: 1;
+  }
+
+  .install-prompt-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .install-prompt-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .install-prompt-btn {
+    background: var(--center-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .install-prompt-close {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px;
+  }
+</style>
+
+
+<div class="container">
+  
+  <div class="view active" id="centerSelectView">
+    <div class="header" style="text-align: center; margin-bottom: 32px;">
+      <h1 class="logo">Fjörlistinn</h1>
+      <p class="subtitle">Veldu félagsmiðstöð</p>
+    </div>
+
+    <div class="centers-grid" id="centersGrid">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Hleð...</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Tómstundamiðstöð Reykjanesbæjar</p>
+    </div>
+  </div>
+
+  
+  <div class="view" id="roleSelectView">
+    <button class="back-btn" onclick="goBack()">
+      ← Til baka
+    </button>
+
+    <div class="header" style="text-align: center; margin-bottom: 32px;">
+      <h1 class="logo">Fjörlistinn</h1>
+      <p class="subtitle">Veldu viðmót</p>
+      <p class="center-name" id="selectedCenterName"></p>
+    </div>
+
+    <div class="roles-grid">
+      <div class="role-card" onclick="goToRole('nemandi')">
+        <div class="role-icon">👤</div>
+        <div class="role-content">
+          <div class="role-title">Nemandi</div>
+          <div class="role-desc">Skrá mætingu + Mín síða</div>
+        </div>
+        <div class="role-arrow">→</div>
+      </div>
+
+      <div class="role-card" onclick="goToRole('starfsmadur')">
+        <div class="role-icon">👷</div>
+        <div class="role-content">
+          <div class="role-title">Starfsmaður</div>
+          <div class="role-desc">Mætingayfirlit og skráningar</div>
+        </div>
+        <div class="role-arrow">→</div>
+      </div>
+
+      <div class="role-card" onclick="goToRole('deildarstjori')">
+        <div class="role-icon">👔</div>
+        <div class="role-content">
+          <div class="role-title">Deildarstjóri</div>
+          <div class="role-desc">Ítarleg stjórnun og tölfræði</div>
+        </div>
+        <div class="role-arrow">→</div>
+      </div>
+
+      <div class="role-card" onclick="goToRole('admin')">
+        <div class="role-icon">⚙️</div>
+        <div class="role-content">
+          <div class="role-title">Admin</div>
+          <div class="role-desc">Kerfisstjórnun</div>
+        </div>
+        <div class="role-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Tómstundamiðstöð Reykjanesbæjar</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="install-prompt" id="installPrompt">
+  <div class="install-prompt-text">
+    <div class="install-prompt-title">Setja upp Fjörlistinn</div>
+    <div class="install-prompt-desc">Bættu við heimaskjá fyrir fljótari aðgang</div>
+  </div>
+  <button class="install-prompt-btn" id="installBtn">Setja upp</button>
+  <button class="install-prompt-close" id="installClose">×</button>
+</div>
+
+
+<script src="/js/pages/index/main.js"></script>
+
+
+  
+  <!-- Shared JS -->
+  <script src="/js/shared/config.js"></script>
+  <script src="/js/shared/api.js"></script>
+  <script src="/js/shared/utils.js"></script>
+  <script src="/js/shared/state.js"></script>
+  <script src="/js/shared/auth.js"></script>
+  
+  
+  
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Fjörlistinn SW registered'))
+          .catch(err => console.log('Fjörlistinn SW failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

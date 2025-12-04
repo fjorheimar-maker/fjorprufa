@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kiosk - Fjörlistinn - Fjörlistinn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="Mætingarkerfi fyrir félagsmiðstöðvar Reykjanesbæjar" />
+  <meta name="theme-color" content="#8B5CF6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Fjörlistinn" />
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/icon.svg" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/css/shared/base.css">
+  <link rel="stylesheet" href="/css/shared/buttons.css">
+  <link rel="stylesheet" href="/css/shared/forms.css">
+  <link rel="stylesheet" href="/css/shared/cards.css">
+  <link rel="stylesheet" href="/css/shared/loading.css">
+  <link rel="stylesheet" href="/css/shared/modals.css">
+  
+  <!-- Component CSS -->
+  <link rel="stylesheet" href="/css/components/login.css">
+  <link rel="stylesheet" href="/css/components/header.css">
+  <link rel="stylesheet" href="/css/components/tabs.css">
+  
+  
+</head>
+<body>
+  
+
+<link rel="stylesheet" href="/css/pages/kiosk.css">
+
+
+<div class="kiosk-page">
+  
+  <div class="kiosk-header">
+    <div class="kiosk-logo">Fjörlistinn</div>
+    <div class="kiosk-center-name" id="kioskCenterName">-</div>
+    <div class="kiosk-time" id="kioskTime">--:--</div>
+  </div>
+
+  
+  <div class="kiosk-main" id="kioskMain">
+    <div class="kiosk-card">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Hleð...</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <button class="kiosk-exit-trigger" id="kioskExitTrigger"></button>
+</div>
+
+
+<script src="/js/pages/kiosk/main.js"></script>
+
+  
+  <!-- Shared JS -->
+  <script src="/js/shared/config.js"></script>
+  <script src="/js/shared/api.js"></script>
+  <script src="/js/shared/utils.js"></script>
+  <script src="/js/shared/state.js"></script>
+  <script src="/js/shared/auth.js"></script>
+  
+  
+  
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Fjörlistinn SW registered'))
+          .catch(err => console.log('Fjörlistinn SW failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

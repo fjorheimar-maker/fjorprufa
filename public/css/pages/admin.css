@@ -1,0 +1,361 @@
+/* ============================================
+   ADMIN PAGE STYLES
+   ============================================ */
+
+/* Admin color override */
+.admin-page {
+  --center-color: var(--color-admin);
+}
+
+/* Admin header */
+.admin-header {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  padding: 20px 24px;
+  color: white;
+}
+
+.admin-header-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.admin-header-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Overview cards */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.overview-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  border-left: 4px solid var(--card-accent, var(--color-admin));
+}
+
+.overview-card-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.overview-card-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--card-accent, var(--color-admin));
+}
+
+.overview-card-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* Center comparison grid */
+.centers-comparison {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+  .centers-comparison {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.center-comparison-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  border-top: 4px solid var(--center-accent);
+}
+
+.center-comparison-name {
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--center-accent);
+}
+
+.center-comparison-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+
+.center-comparison-stat:last-child {
+  border-bottom: none;
+}
+
+/* User management table */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-card);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.users-table th,
+.users-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.users-table th {
+  background: var(--color-bg);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.users-table tr:last-child td {
+  border-bottom: none;
+}
+
+.users-table tr:hover td {
+  background: var(--color-card-hover);
+}
+
+.user-role-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.user-role-badge.admin {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--color-admin);
+}
+
+.user-role-badge.deildarstjori {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8B5CF6;
+}
+
+.user-role-badge.staff {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-success);
+}
+
+.user-status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.user-status-badge.active {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-success);
+}
+
+.user-status-badge.inactive {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-error);
+}
+
+/* Table actions */
+.table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.table-action-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+}
+
+.table-action-btn:hover {
+  background: var(--color-card-hover);
+  color: var(--color-text);
+}
+
+.table-action-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-error);
+}
+
+/* Settings section */
+.settings-section {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.settings-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  font-weight: 500;
+}
+
+.settings-description {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* Toggle switch */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-border);
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--color-admin);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* Export section */
+.export-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .export-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.export-card {
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.export-card:hover {
+  border-color: var(--color-admin);
+}
+
+.export-card-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.export-card-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.export-card-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Danger zone */
+.danger-zone {
+  border: 2px solid var(--color-error);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 32px;
+}
+
+.danger-zone-title {
+  color: var(--color-error);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.danger-zone-btn {
+  background: var(--color-error);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.danger-zone-btn:hover {
+  opacity: 0.9;
+}

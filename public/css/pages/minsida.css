@@ -1,0 +1,326 @@
+/* ============================================
+   MÍN SÍÐA - Personal student page
+   ============================================ */
+
+/* Page container */
+.minsida-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Profile header */
+.profile-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--center-color), #9333ea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 2.5rem;
+}
+
+.profile-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.profile-info {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Stats overview */
+.minsida-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.minsida-stat {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.minsida-stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--center-color);
+  margin-bottom: 4px;
+}
+
+.minsida-stat-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* Title display */
+.minsida-title-card {
+  background: linear-gradient(135deg, var(--center-color), #9333ea);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.minsida-title-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.minsida-title-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.minsida-title-progress {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.minsida-title-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.minsida-title-bar-fill {
+  height: 100%;
+  background: white;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* Achievements section */
+.minsida-achievements {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.minsida-achievements-title {
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minsida-achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.minsida-achievement {
+  background: var(--color-bg);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.minsida-achievement:hover {
+  transform: translateY(-2px);
+}
+
+.minsida-achievement.locked {
+  opacity: 0.4;
+}
+
+.minsida-achievement-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.minsida-achievement-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.minsida-achievement-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* History section */
+.minsida-history {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.minsida-history-title {
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minsida-history-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.minsida-history-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.minsida-history-item:last-child {
+  border-bottom: none;
+}
+
+.minsida-history-date {
+  min-width: 90px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.minsida-history-center {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--center-color);
+}
+
+.minsida-history-activity {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+/* Chart section */
+.minsida-chart {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.minsida-chart-title {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Streak calendar */
+.minsida-streak-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.minsida-streak-day {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: var(--color-bg);
+}
+
+.minsida-streak-day.active {
+  background: var(--center-color);
+}
+
+.minsida-streak-day.today {
+  border: 2px solid var(--center-color);
+}
+
+/* Leaderboard position */
+.minsida-rank {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.minsida-rank-position {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--center-color);
+}
+
+.minsida-rank-label {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.minsida-rank-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+/* Settings link */
+.minsida-settings {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.minsida-settings-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.minsida-settings-btn:hover {
+  border-color: var(--center-color);
+  color: var(--color-text);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .minsida-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .minsida-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+  }
+  
+  .minsida-stat-value {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  
+  .minsida-achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mín síða - Fjörlistinn - Fjörlistinn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="Mætingarkerfi fyrir félagsmiðstöðvar Reykjanesbæjar" />
+  <meta name="theme-color" content="#8B5CF6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Fjörlistinn" />
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/icon.svg" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/css/shared/base.css">
+  <link rel="stylesheet" href="/css/shared/buttons.css">
+  <link rel="stylesheet" href="/css/shared/forms.css">
+  <link rel="stylesheet" href="/css/shared/cards.css">
+  <link rel="stylesheet" href="/css/shared/loading.css">
+  <link rel="stylesheet" href="/css/shared/modals.css">
+  
+  <!-- Component CSS -->
+  <link rel="stylesheet" href="/css/components/login.css">
+  <link rel="stylesheet" href="/css/components/header.css">
+  <link rel="stylesheet" href="/css/components/tabs.css">
+  
+  
+</head>
+<body>
+  
+
+<link rel="stylesheet" href="/css/pages/nemandi.css">
+
+<div class="container">
+  
+  <div class="loading" id="minsidaLoading">
+    <div class="loading-spinner"></div>
+    <p>Sæki upplýsingar...</p>
+  </div>
+
+  
+  <div id="minsidaContent" style="display: none;">
+    
+    <div class="card" style="text-align: center; margin-bottom: 24px;">
+      <h1 id="minsidaNafn" style="font-size: 1.75rem; margin-bottom: 8px;">-</h1>
+      <p style="color: var(--color-text-muted);" id="minsidaInfo">-</p>
+    </div>
+
+    
+    <div class="gamification-card">
+      <div class="gamification-title" id="minsidaTitle">🏆 Nýliði</div>
+      <div class="gamification-stats">
+        <div class="gamification-stat">
+          <div class="gamification-stat-value" id="minsidaTotal">0</div>
+          <div class="gamification-stat-label">Mætingar</div>
+        </div>
+        <div class="gamification-stat">
+          <div class="gamification-stat-value" id="minsidaStreak">0 🔥</div>
+          <div class="gamification-stat-label">Vikur í röð</div>
+        </div>
+        <div class="gamification-stat">
+          <div class="gamification-stat-value" id="minsidaRank">-</div>
+          <div class="gamification-stat-label">Sæti</div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="card" style="margin-top: 20px;">
+      <div class="section-title">🏅 Afrek</div>
+      <div class="achievements-row" id="minsidaAchievements">
+        <p style="color: var(--color-text-muted);">Engin afrek enn</p>
+      </div>
+    </div>
+
+    
+    <div class="card" style="margin-top: 20px;">
+      <div class="section-title">📋 Síðustu mætingar</div>
+      <div id="minsidaHistory">
+        <p style="color: var(--color-text-muted);">Engar mætingar</p>
+      </div>
+    </div>
+
+    
+    <div class="card" style="margin-top: 20px;">
+      <div class="section-title">📊 Mæting eftir mánuðum</div>
+      <div class="bar-chart" id="minsidaMonthChart"></div>
+    </div>
+
+    
+    <button class="back-btn" onclick="goBack()" style="margin-top: 24px;">
+      ← Til baka
+    </button>
+  </div>
+
+  
+  <div id="minsidaError" style="display: none; text-align: center; padding: 40px;">
+    <div style="font-size: 3rem; margin-bottom: 16px;">😕</div>
+    <h2>Villa kom upp</h2>
+    <p style="color: var(--color-text-muted);">Gat ekki sótt upplýsingar</p>
+    <button class="btn" onclick="window.location.reload()" style="margin-top: 16px;">Reyna aftur</button>
+  </div>
+</div>
+
+<script>
+// Get student ID from URL
+const urlParams = new URLSearchParams(window.location.search);
+const studentId = urlParams.get('id');
+
+// Initialize
+document.addEventListener('DOMContentLoaded', async () => {
+  if (!studentId) {
+    showError();
+    return;
+  }
+
+  // Set center color from URL if provided
+  initCenterFromUrl();
+
+  try {
+    const stats = await apiGet('studentStats', { student_id: studentId });
+    
+    if (stats.status === 'error') {
+      showError();
+      return;
+    }
+
+    renderMinsida(stats);
+  } catch (err) {
+    console.error('Villa:', err);
+    showError();
+  }
+});
+
+function renderMinsida(data) {
+  document.getElementById('minsidaLoading').style.display = 'none';
+  document.getElementById('minsidaContent').style.display = 'block';
+
+  // Basic info
+  document.getElementById('minsidaNafn').textContent = data.nafn || '-';
+  document.getElementById('minsidaInfo').textContent = `${data.skoli || ''} • ${data.bekkur || ''}. bekkur`;
+
+  // Stats
+  document.getElementById('minsidaTitle').textContent = `🏆 ${data.title || 'Nýliði'}`;
+  document.getElementById('minsidaTotal').textContent = data.totalCount || 0;
+  document.getElementById('minsidaStreak').textContent = `${data.streakWeeks || 0} 🔥`;
+  document.getElementById('minsidaRank').textContent = data.rank ? `#${data.rank}` : '-';
+
+  // Achievements
+  const achievementsEl = document.getElementById('minsidaAchievements');
+  if (data.achievements && data.achievements.length > 0) {
+    achievementsEl.innerHTML = data.achievements.map(a => `
+      <div class="achievement-badge">
+        <span>${a.emoji || '🏅'}</span>
+        <span>${a.name || a}</span>
+      </div>
+    `).join('');
+  }
+
+  // History
+  const historyEl = document.getElementById('minsidaHistory');
+  if (data.recentAttendance && data.recentAttendance.length > 0) {
+    historyEl.innerHTML = data.recentAttendance.slice(0, 10).map(a => `
+      <div class="attendance-item" style="padding: 12px 0; border-bottom: 1px solid var(--color-border);">
+        <div style="font-weight: 500;">${formatFullDate(a.date)}</div>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">${a.center_name || a.center_id} • ${a.dagskrarlid || ''}</div>
+      </div>
+    `).join('');
+  }
+
+  // Monthly chart
+  if (data.byMonth) {
+    const monthData = Object.entries(data.byMonth).map(([month, count]) => ({
+      label: month,
+      value: count
+    }));
+    renderWeeklyChart('minsidaMonthChart', monthData);
+  }
+}
+
+function showError() {
+  document.getElementById('minsidaLoading').style.display = 'none';
+  document.getElementById('minsidaError').style.display = 'block';
+}
+
+function goBack() {
+  if (document.referrer) {
+    window.history.back();
+  } else {
+    window.location.href = 'index.html';
+  }
+}
+</script>
+
+  
+  <!-- Shared JS -->
+  <script src="/js/shared/config.js"></script>
+  <script src="/js/shared/api.js"></script>
+  <script src="/js/shared/utils.js"></script>
+  <script src="/js/shared/state.js"></script>
+  <script src="/js/shared/auth.js"></script>
+  
+  
+  
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Fjörlistinn SW registered'))
+          .catch(err => console.log('Fjörlistinn SW failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

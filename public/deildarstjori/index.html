@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deildarstjórasvæði - Fjörlistinn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="Mætingarkerfi fyrir félagsmiðstöðvar Reykjanesbæjar" />
+  <meta name="theme-color" content="#8B5CF6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Fjörlistinn" />
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/icon.svg" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/css/shared/base.css">
+  <link rel="stylesheet" href="/css/shared/buttons.css">
+  <link rel="stylesheet" href="/css/shared/forms.css">
+  <link rel="stylesheet" href="/css/shared/cards.css">
+  <link rel="stylesheet" href="/css/shared/loading.css">
+  <link rel="stylesheet" href="/css/shared/modals.css">
+  
+  <!-- Component CSS -->
+  <link rel="stylesheet" href="/css/components/login.css">
+  <link rel="stylesheet" href="/css/components/header.css">
+  <link rel="stylesheet" href="/css/components/tabs.css">
+  
+  
+</head>
+<body>
+  
+
+<link rel="stylesheet" href="/css/components/attendance.css">
+<link rel="stylesheet" href="/css/components/calendar.css">
+<link rel="stylesheet" href="/css/components/charts.css">
+<link rel="stylesheet" href="/css/components/student-popup.css">
+<link rel="stylesheet" href="/css/components/autocomplete.css">
+<link rel="stylesheet" href="/css/components/virkni.css">
+<link rel="stylesheet" href="/css/pages/staff.css">
+
+
+
+<div class="login-view" id="centerSelectView">
+  <div class="login-card" style="max-width: 500px;">
+    <div class="login-header">
+      <div class="login-icon">📍</div>
+      <h1 class="login-title">Deildarstjórasvæði</h1>
+      <p style="color: var(--color-text-muted); margin-top: 8px;">Veldu félagsmiðstöð</p>
+    </div>
+
+    <div class="center-select-grid">
+      <button class="center-select-btn" data-center="HAFNOFELO" style="--btn-color: #8B5CF6; background: linear-gradient(135deg, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6, #ec4899);">
+        <span class="center-select-name">Fjör Hafnó</span>
+      </button>
+      <button class="center-select-btn" data-center="STAPAFELO" style="--btn-color: #8B5CF6;">
+        <span class="center-select-name">Fjör Stapa</span>
+      </button>
+      <button class="center-select-btn" data-center="AKURFELO" style="--btn-color: #EAB308;">
+        <span class="center-select-name">Fjör Akur</span>
+      </button>
+      <button class="center-select-btn" data-center="HAALEITIFELO" style="--btn-color: #EC4899;">
+        <span class="center-select-name">Fjör Háaleiti</span>
+      </button>
+    </div>
+
+    <div class="login-footer">
+      <a href="index.html">← Til baka á forsíðu</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="login-view" id="loginView" style="display: none;">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-icon">🔐</div>
+      <h1 class="login-title">Deildarstjórasvæði</h1>
+      <p class="login-center-name" id="loginCenterName">Fjörlistinn</p>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label class="form-label">Lykilorð</label>
+        <input type="password" class="form-input" id="loginPassword" placeholder="Lykilorð stöðvarinnar..." required />
+      </div>
+
+      <button type="submit" class="btn" id="loginBtn">Skrá inn</button>
+    </form>
+
+    <div class="login-error" id="loginError">
+      Rangt lykilorð
+    </div>
+
+    <div class="login-footer">
+      <a href="index.html">← Til baka á forsíðu</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="main-view" id="mainView">
+  
+<header class="header">
+  <div class="header-left">
+    <div class="header-center-name" id="headerCenterName">Fjör</div>
+    <div class="header-date" id="headerDate"></div>
+  </div>
+  <div class="header-right">
+    <span class="user-name" id="userName"></span>
+    <button class="logout-btn" onclick="logout()">Útskrá</button>
+  </div>
+</header>
+
+  
+  
+<div class="tabs-container">
+  <div class="tabs">
+    <button class="tab active" data-tab="maeting">📋 Mæting dagsins</button>
+    <button class="tab" data-tab="tolfraedi">📊 Tölfræði</button>
+    <button class="tab" data-tab="midstig">📝 Miðstig</button>
+    <button class="tab" data-tab="uppfletting">🔍 Uppfletting</button>
+    <button class="tab" data-tab="virkni">👥 Virkni</button>
+    
+    <button class="tab" data-tab="leaderboard">🏆 Stigatafla</button>
+    
+    <button class="tab" data-tab="nyr-nemandi">➕ Nýr nemandi</button>
+    <button class="tab" data-tab="skra-maeting">✏️ Skrá mætingu</button>
+    <button class="tab" data-tab="kiosk">🔒 Kiosk</button>
+  </div>
+</div>
+
+  
+  <div class="content">
+    
+<div class="tab-content active" id="tab-maeting">
+  <div class="current-activity" id="currentActivity">
+    <div class="activity-info">
+      <span class="activity-icon">📋</span>
+      <div>
+        <div class="activity-name" id="activityName">Sæki upplýsingar...</div>
+        <div class="activity-time" id="activityTime"></div>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <div class="activity-count" id="activityCount">-</div>
+      <div class="activity-count-label">nemendur</div>
+    </div>
+  </div>
+
+  <div class="section-title">Mætingalisti</div>
+  
+  
+  <div class="date-navigation">
+    <button class="date-nav-btn" id="prevDayBtn" onclick="changeDate(-1)">←</button>
+    <div class="date-display" id="dateDisplay">Í dag</div>
+    <button class="date-nav-btn" id="nextDayBtn" onclick="changeDate(1)" disabled>→</button>
+  </div>
+  
+  <div class="attendance-list" id="attendanceList">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>Sæki mætingar...</p>
+    </div>
+  </div>
+
+  
+  <div class="attendance-legend" id="attendanceLegend" style="display: none;">
+    <div class="legend-item">
+      <span class="legend-icon">🔥</span>
+      <span>Vikur í röð</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-icon">⚠️</span>
+      <span>10+ dagar frá mætingu</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-icon">⭐</span>
+      <span>Fyrsta mæting</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">📊 Sundurliðun</div>
+    <div class="breakdown" id="attendanceBreakdown"></div>
+  </div>
+
+  
+  
+<div class="calendar-section">
+  <div class="calendar-header">
+    <button class="calendar-nav-btn" id="prevMonth">←</button>
+    <h2 id="calendarTitle">Desember 2025</h2>
+    <button class="calendar-nav-btn" id="nextMonth">→</button>
+  </div>
+  
+  <div class="calendar-weekdays">
+    <div class="calendar-weekday">Mánudagur</div>
+    <div class="calendar-weekday">Þriðjudagur</div>
+    <div class="calendar-weekday">Miðvikudagur</div>
+    <div class="calendar-weekday">Fimmtudagur</div>
+    <div class="calendar-weekday">Föstudagur</div>
+  </div>
+  
+  <div id="calendarGrid" class="calendar-grid"></div>
+  
+  <div class="calendar-loading" id="calendarLoading">
+    <div class="spinner"></div>
+    <p>Sæki dagatal...</p>
+  </div>
+</div>
+
+</div>
+
+    
+<div class="tab-content" id="tab-tolfraedi">
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card">
+      <div class="stat-value" id="statDay">-</div>
+      <div class="stat-label">Síðasta opnun</div>
+      <div class="stat-change" id="statDayChange"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statWeek">-</div>
+      <div class="stat-label">Síðustu 5 opnanir</div>
+      <div class="stat-change" id="statWeekChange"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statMonth">-</div>
+      <div class="stat-label">Síðustu 10 opnanir</div>
+      <div class="stat-change" id="statMonthChange"></div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">📈 Mæting eftir opnunum</div>
+    <div class="bar-chart" id="weeklyChart"></div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">🏫 Eftir skólum</div>
+    <div class="horizontal-bar-chart" id="schoolChart"></div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">📚 Eftir bekkjum</div>
+    <div class="horizontal-bar-chart" id="gradeChart"></div>
+  </div>
+</div>
+
+    
+<div class="tab-content" id="tab-midstig">
+  <div class="section-title">📝 Skrá miðstigsmætingu (5.-7. bekkur)</div>
+
+  <div class="card">
+    <table class="midstig-table">
+      <thead>
+        <tr>
+          <th>Skóli</th>
+          <th>5. bekk</th>
+          <th>6. bekk</th>
+          <th>7. bekk</th>
+          <th>Samtals</th>
+        </tr>
+      </thead>
+      <tbody id="midstigTableBody">
+        
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Samtals</td>
+          <td id="midstigTotal5">0</td>
+          <td id="midstigTotal6">0</td>
+          <td id="midstigTotal7">0</td>
+          <td id="midstigTotalAll">0</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <button class="btn" style="margin-top: 20px;" onclick="submitMidstig()">Skrá miðstigsmætingu</button>
+  </div>
+
+  <div class="previous-entries">
+    <div class="section-title">🕐 Fyrri skráningar í dag</div>
+    <div id="previousMidstig"></div>
+  </div>
+</div>
+
+    
+<div class="tab-content" id="tab-uppfletting">
+  <div class="search-bar">
+    <input type="text" class="form-input" id="searchInput" placeholder="Leita að nemanda..." />
+    <select id="schoolFilter">
+      <option value="">Allir skólar</option>
+    </select>
+  </div>
+
+  <div id="searchResults">
+    <div class="empty-state">
+      <div class="empty-state-icon">🔍</div>
+      <p>Sláðu inn nafn til að leita</p>
+    </div>
+  </div>
+
+  <div id="studentDetail" style="display: none;"></div>
+</div>
+
+    
+<div class="tab-content" id="tab-virkni">
+  <div class="section-title">📊 Virkniflokkar (síðustu 8 vikur)</div>
+
+  <div class="activity-grid" id="activityGrid">
+    <div class="activity-card virkir" data-status="virkir">
+      <div class="activity-card-icon">🟢</div>
+      <div class="activity-card-count" id="countVirkir">-</div>
+      <div class="activity-card-label">Virkir</div>
+    </div>
+    <div class="activity-card ad-detta" data-status="ad_detta">
+      <div class="activity-card-icon">🟡</div>
+      <div class="activity-card-count" id="countAdDetta">-</div>
+      <div class="activity-card-label">Að detta úr</div>
+    </div>
+    <div class="activity-card nylega-haettir" data-status="nylega_haettir">
+      <div class="activity-card-icon">🟠</div>
+      <div class="activity-card-count" id="countNylegaHaettir">-</div>
+      <div class="activity-card-label">Nýlega hættir</div>
+    </div>
+    <div class="activity-card haettir" data-status="haettir">
+      <div class="activity-card-icon">🔴</div>
+      <div class="activity-card-count" id="countHaettir">-</div>
+      <div class="activity-card-label">Hættir</div>
+    </div>
+    <div class="activity-card ovirkir" data-status="ovirkir">
+      <div class="activity-card-icon">⚪</div>
+      <div class="activity-card-count" id="countOvirkir">-</div>
+      <div class="activity-card-label">Óvirkir</div>
+    </div>
+  </div>
+
+  <div class="activity-breakdown" id="activityBreakdown">
+    <div class="activity-info-text">
+      ℹ️ Smelltu á flokk til að sjá sundurliðun eftir skólum
+    </div>
+  </div>
+</div>
+
+    
+<div class="tab-content" id="tab-leaderboard">
+  <div class="section-title">🏆 Stigatafla</div>
+
+  <div class="card">
+    <div class="form-group">
+      <label class="form-label">Tímabil</label>
+      <select class="form-select" id="leaderboardPeriod" onchange="loadLeaderboard()">
+        <option value="week">Þessi vika</option>
+        <option value="month" selected>Þessi mánuður</option>
+        <option value="year">Þetta skólaár</option>
+        <option value="all">Allt tímabil</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="leaderboardList">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>Sæki stigatöflu...</p>
+    </div>
+  </div>
+</div>
+
+    
+<div class="tab-content" id="tab-nyr-nemandi">
+  <div class="section-title">➕ Bæta við nemanda</div>
+
+  <div class="add-student-info">
+    ℹ️ Notaðu þetta til að bæta við nemendum úr skólum utan Reykjanesbæjar. 
+    Nemandinn getur síðan merkt mætingu í öllum félagsmiðstöðvum.
+  </div>
+
+  <div class="card add-student-form">
+    <div class="form-group">
+      <label class="form-label">Nafn</label>
+      <input type="text" class="form-input" id="newStudentName" placeholder="Fullt nafn..." />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Skóli</label>
+      <select class="form-input" id="newStudentSchool" style="width: 100%;">
+        <option value="">Veldu skóla...</option>
+        <option value="Akurskóli">Akurskóli</option>
+        <option value="Stapaskóli">Stapaskóli</option>
+        <option value="Háleitisskóli">Háleitisskóli</option>
+        <option value="Myllubakkaskóli">Myllubakkaskóli</option>
+        <option value="Njarðvíkurskóli">Njarðvíkurskóli</option>
+        <option value="Heiðarskóli">Heiðarskóli</option>
+        <option value="Holtaskóli">Holtaskóli</option>
+        <option value="Aðrir skólar">Aðrir skólar</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="customSchoolGroup" style="display: none;">
+      <label class="form-label">Heiti skóla</label>
+      <input type="text" class="form-input" id="customSchoolName" placeholder="Sláðu inn heiti skóla..." />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Bekkur</label>
+      <select class="form-input" id="newStudentGrade" style="width: 100%;">
+        <option value="8">8. bekkur</option>
+        <option value="9">9. bekkur</option>
+        <option value="10">10. bekkur</option>
+      </select>
+    </div>
+
+    <button class="btn" onclick="addNewStudent()">Bæta við nemanda</button>
+
+    <div class="success-message" id="addStudentSuccess">
+      ✅ Nemandi bættur við! Lykilorð: <span id="newStudentPassword"></span>
+    </div>
+  </div>
+</div>
+
+    
+<div class="tab-content" id="tab-skra-maeting">
+  <div class="section-title">✏️ Skrá mætingu handvirkt</div>
+  
+  <div id="skraMessage"></div>
+  
+  <div class="skra-form">
+    <div class="form-group">
+      <label>📅 Dagsetning</label>
+      <input type="date" id="skraDagsetning" />
+    </div>
+    
+    <div class="form-group">
+      <label>🕐 Dagskrárliður</label>
+      <select id="skraDagskrarlid">
+        <option value="">Veldu dagskrárlið...</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>👤 Nemandi</label>
+      <div class="autocomplete-wrapper">
+        <input type="text" id="skraNemandi" placeholder="Byrjaðu að skrifa nafn..." autocomplete="off" />
+        <div class="autocomplete-results" id="autocompleteResults"></div>
+      </div>
+      <div id="selectedStudent"></div>
+    </div>
+    
+    <button class="btn-skra" id="btnSkraMaeting" disabled>✔ Skrá mætingu</button>
+  </div>
+  
+  <div class="nylega-skrad">
+    <h4>🕐 Nýlega skráð af þér</h4>
+    <div id="nylegaSkradList">
+      <p style="color: var(--color-text-muted); font-size: 0.9rem;">Engar skráningar enn...</p>
+    </div>
+  </div>
+</div>
+
+    
+<div class="tab-content" id="tab-kiosk">
+  <div class="section-title">🔒 Kiosk Mode</div>
+  <div class="skra-form">
+    <p style="color: var(--color-text-muted); margin-bottom: 24px; line-height: 1.6;">
+      Kiosk mode læsir skjáinn á mætingarviðmóti fyrir iPad eða snjalltæki við hurðina. 
+      Nemendur geta skráð mætingu og skoðað Mín síða (með 20 sek timer).
+      Til að opna þarf lykilorð.
+    </p>
+    
+    <div class="kiosk-features" style="margin-bottom: 24px;">
+      <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+        <span style="font-size: 1.2rem;">✔</span>
+        <div>
+          <div style="font-weight: 500;">Læst viðmót</div>
+          <div style="font-size: 0.9rem; color: var(--color-text-muted);">Nemendur geta ekki farið úr mætingarskjánum</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+        <span style="font-size: 1.2rem;">✔</span>
+        <div>
+          <div style="font-weight: 500;">Mín síða með timer</div>
+          <div style="font-size: 0.9rem; color: var(--color-text-muted);">Nemendur geta séð sína tölfræði í 20 sek</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 12px;">
+        <span style="font-size: 1.2rem;">✔</span>
+        <div>
+          <div style="font-weight: 500;">Lykilorðsvörn</div>
+          <div style="font-size: 0.9rem; color: var(--color-text-muted);">Aðeins starfsfólk getur opnað kioskinn</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="openKioskMode()">🚀 Opna Kiosk Mode</button>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+<div class="student-popup-overlay" id="studentPopupOverlay">
+  <div class="student-popup" id="studentPopup">
+    
+  </div>
+</div>
+
+
+
+<script src="/js/components/tabs.js"></script>
+<script src="/js/components/calendar.js"></script>
+<script src="/js/components/student-popup.js"></script>
+<script src="/js/pages/staff/init.js"></script>
+<script src="/js/pages/staff/maeting.js"></script>
+<script src="/js/pages/staff/tolfraedi.js"></script>
+<script src="/js/pages/staff/midstig.js"></script>
+<script src="/js/pages/staff/uppfletting.js"></script>
+<script src="/js/pages/staff/virkni.js"></script>
+<script src="/js/pages/staff/skra-maeting.js"></script>
+<script src="/js/pages/staff/leaderboard.js"></script>
+<script src="/js/pages/staff/nyr-nemandi.js"></script>
+
+<script>
+  // Set role to deildarstjori
+  currentUserRole = 'deildarstjori';
+</script>
+
+
+
+  
+  <!-- Shared JS -->
+  <script src="/js/shared/config.js"></script>
+  <script src="/js/shared/api.js"></script>
+  <script src="/js/shared/utils.js"></script>
+  <script src="/js/shared/state.js"></script>
+  <script src="/js/shared/auth.js"></script>
+  
+  
+  
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Fjörlistinn SW registered'))
+          .catch(err => console.log('Fjörlistinn SW failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

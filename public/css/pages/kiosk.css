@@ -1,0 +1,333 @@
+/* ============================================
+   KIOSK PAGE STYLES
+   ============================================ */
+
+/* Kiosk mode - fullscreen, no scroll */
+.kiosk-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Kiosk header */
+.kiosk-header {
+  background: var(--color-card);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.kiosk-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--center-color), #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.kiosk-center-name {
+  color: var(--center-color);
+  font-weight: 600;
+}
+
+.kiosk-time {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* Kiosk main content */
+.kiosk-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Kiosk card */
+.kiosk-card {
+  background: var(--color-card);
+  border-radius: 32px;
+  padding: 48px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.kiosk-icon {
+  font-size: 5rem;
+  margin-bottom: 24px;
+}
+
+.kiosk-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.kiosk-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+}
+
+/* Kiosk input */
+.kiosk-input-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.kiosk-input {
+  width: 100%;
+  padding: 24px 32px;
+  font-size: 1.5rem;
+  font-family: inherit;
+  background: var(--color-bg);
+  border: 3px solid var(--color-border);
+  border-radius: 20px;
+  color: var(--color-text);
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.kiosk-input:focus {
+  border-color: var(--center-color);
+}
+
+.kiosk-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Kiosk button */
+.kiosk-btn {
+  width: 100%;
+  padding: 24px 32px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: inherit;
+  background: var(--center-color);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.kiosk-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.kiosk-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Kiosk success */
+.kiosk-success {
+  animation: scaleIn 0.5s ease;
+}
+
+.kiosk-success-icon {
+  font-size: 6rem;
+  margin-bottom: 24px;
+}
+
+.kiosk-success-name {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--center-color);
+  margin-bottom: 16px;
+}
+
+.kiosk-success-message {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+}
+
+/* Kiosk gamification */
+.kiosk-gamification {
+  background: var(--color-bg);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.kiosk-title-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--center-color), #9333ea);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.kiosk-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.kiosk-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--center-color);
+}
+
+.kiosk-stat-label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Kiosk milestone */
+.kiosk-milestone {
+  background: linear-gradient(135deg, #f97316, #eab308);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  animation: bounce 1s ease 2;
+}
+
+.kiosk-milestone-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.kiosk-milestone-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* Mín síða link */
+.kiosk-minsida-btn {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 16px;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kiosk-minsida-btn:hover {
+  border-color: var(--center-color);
+  background: var(--color-card);
+}
+
+/* Kiosk timer */
+.kiosk-timer {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: 12px 24px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kiosk-timer-bar {
+  width: 100px;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.kiosk-timer-progress {
+  height: 100%;
+  background: var(--center-color);
+  transition: width 1s linear;
+}
+
+.kiosk-timer-text {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Kiosk exit button (hidden, activated with password) */
+.kiosk-exit-trigger {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+/* Exit modal */
+.kiosk-exit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.kiosk-exit-modal-content {
+  background: var(--color-card);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.kiosk-exit-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.kiosk-exit-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.kiosk-exit-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.kiosk-exit-actions button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,325 @@
+/* ============================================
+   STUDENT POPUP COMPONENT
+   ============================================ */
+
+.student-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.student-popup-info h3 {
+  font-size: 1.25rem;
+  margin: 0 0 4px 0;
+}
+
+.student-popup-info p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.student-popup-close {
+  background: var(--color-bg);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+.student-popup-close:hover {
+  color: var(--color-text);
+}
+
+.student-popup-body {
+  padding: 20px;
+}
+
+.popup-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.popup-stat {
+  background: var(--color-bg);
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.popup-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--center-color);
+}
+
+.popup-stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.popup-info-list {
+  margin-bottom: 20px;
+}
+
+.popup-info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.popup-info-item:last-child {
+  border-bottom: none;
+}
+
+.popup-info-icon {
+  font-size: 1.1rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+.popup-info-text {
+  flex: 1;
+}
+
+.popup-info-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.popup-info-value {
+  font-weight: 500;
+}
+
+.popup-section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup-attendance-list {
+  background: var(--color-bg);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.popup-attendance-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.popup-attendance-item:last-child {
+  border-bottom: none;
+}
+
+.popup-attendance-date {
+  font-weight: 500;
+  min-width: 80px;
+}
+
+.popup-attendance-time {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  min-width: 50px;
+}
+
+.popup-attendance-dagskra {
+  flex: 1;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.popup-see-more {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--center-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.popup-see-more:hover {
+  opacity: 0.9;
+}
+
+.popup-title-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--center-color), #9333ea);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.popup-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--color-text-muted);
+}
+
+/* Student detail (in tab) */
+.student-detail {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.student-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.student-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.student-school {
+  color: var(--color-text-muted);
+}
+
+.student-status {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.student-status.virkir { background: rgba(34, 197, 94, 0.15); color: var(--color-virkir); }
+.student-status.ad-detta { background: rgba(234, 179, 8, 0.15); color: var(--color-ad-detta); }
+.student-status.nylega-haettir { background: rgba(249, 115, 22, 0.15); color: var(--color-nylega-haettir); }
+.student-status.haettir { background: rgba(239, 68, 68, 0.15); color: var(--color-haettir); }
+.student-status.ovirkir { background: rgba(107, 114, 128, 0.15); color: var(--color-ovirkir); }
+
+.student-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.student-stat {
+  padding: 16px;
+  background: var(--color-bg);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.student-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--center-color);
+}
+
+.student-stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.student-centers {
+  margin-bottom: 20px;
+}
+
+.center-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.center-stat:last-child {
+  border-bottom: none;
+}
+
+/* Password section */
+.password-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--color-bg);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.password-label {
+  color: var(--color-text-muted);
+}
+
+.password-value {
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: var(--center-color);
+}
+
+.password-hidden {
+  color: var(--color-text-muted);
+}
+
+.password-toggle {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+/* Comments section */
+.comments-section h4 {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment {
+  padding: 12px 16px;
+  background: var(--color-bg);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.comment-text {
+  margin-bottom: 6px;
+}
+
+.comment-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
